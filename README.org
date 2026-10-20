@@ -1,0 +1,9 @@
+#+TITLE: Thesis
+
+
+* =LICENSE=
+
+=LICENSE=, or the lack of any real one, applies only to artifacts of my own
+making. Appropriate =LICENSE= and credicts for third-party artifacts can be
+found by recursively moving up the directory tree until the first =LICENSE=
+file is reached.
