@@ -17,6 +17,4 @@ popd
 
 mkdir -p artifacts/
 
-cp -r "$tmpdir" artifacts/
-
-rm -rf "$tmpdir"
+mv "$tmpdir" "artifacts/$(date +"%Y%m%dT%H%M%S")_ltl"

@@ -1,0 +1,1 @@
+Read `sockit_owm.v` and write SystemVerilog Assertions of its behavior to `sockit_owm.sva`, one assertion per line. Reading that file and writing this one are the only actions permitted; do not take or attempt any other action.
