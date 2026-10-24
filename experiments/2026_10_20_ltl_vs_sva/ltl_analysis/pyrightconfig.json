@@ -1,0 +1,5 @@
+{
+	"exclude":[
+		"spot-2.16.1/bench/stutter/stutter.ipynb"
+	]
+}
