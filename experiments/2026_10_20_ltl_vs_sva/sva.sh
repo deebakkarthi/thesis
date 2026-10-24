@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 
-PROMPT=$(< ./sva.md)
+PROMPT=$(<./sva.md)
 
-tmpdir=$(mktemp -d)
+results_dir="artifacts/$(date +"%Y%m%dT%H%M%S")_sva"
+mkdir "$results_dir"
 
-cp ./sockit_owm.v "$tmpdir/"
+for i in {1..5}; do
+	tmpdir=$(mktemp -d)
+	cp ./sockit_owm.v "$tmpdir/"
+	pushd "$tmpdir"
 
-pushd "$tmpdir"
+	unset "ANTHROPIC_API_KEY"
+	claude --print \'"$PROMPT"\' --allowedTools "Read,Write,Edit,Bash" \
+		--dangerously-skip-permissions
 
-unset "ANTHROPIC_API_KEY"
-
-claude --print \'"$PROMPT"\' --allowedTools "Read,Write,Edit,Bash" \
-	--dangerously-skip-permissions
-
-popd 
-
-mkdir -p artifacts/
-
-mv "$tmpdir" "artifacts/$(date +"%Y%m%dT%H%M%S")_sva"
+	popd
+	cp "$tmpdir"/sockit_owm.sva "$results_dir/sockit_owm.sva_$i"
+	rm -rf "$tmpdir"
+done
