@@ -1,0 +1,111 @@
+// SystemVerilog Assertions for sockit_owm (default parameters: OVD_E=1, CDR_E=1, BDW=32, OWN=1, BAW=1)
+// Intended to be placed inside / bound to the sockit_owm module scope; one assertion per line.
+
+// ---------------- reset values (asynchronous active-high reset) ----------------
+a_rst_div:        assert property (@(posedge clk) rst |=> (div == '0));
+a_rst_cdr_n:      assert property (@(posedge clk) rst |=> (cdr_n == CDR_N));
+a_rst_cdr_o:      assert property (@(posedge clk) rst |=> (cdr_o == CDR_O));
+a_rst_cnt:        assert property (@(posedge clk) rst |=> (cnt == '0));
+a_rst_owr_cyc:    assert property (@(posedge clk) rst |=> (owr_cyc == 1'b0));
+a_rst_owr_ovd:    assert property (@(posedge clk) rst |=> (owr_ovd == 1'b0));
+a_rst_owr_rst:    assert property (@(posedge clk) rst |=> (owr_rst == 1'b0));
+a_rst_owr_dat:    assert property (@(posedge clk) rst |=> (owr_dat == 1'b0));
+a_rst_owr_oen:    assert property (@(posedge clk) rst |=> (owr_oen == 1'b0));
+a_rst_owr_pwr:    assert property (@(posedge clk) rst |=> (owr_pwr == '0));
+a_rst_irq_ena:    assert property (@(posedge clk) rst |=> (irq_ena == 1'b0));
+a_rst_irq_sts:    assert property (@(posedge clk) rst |=> (irq_sts == 1'b0));
+a_rst_bus_irq:    assert property (@(posedge clk) rst |=> (bus_irq == 1'b0));
+a_rst_owr_e:      assert property (@(posedge clk) rst |=> (owr_e == '0));
+a_rst_owr_p:      assert property (@(posedge clk) rst |=> (owr_p == '0));
+
+// ---------------- combinational outputs / decode ----------------
+a_bus_irq:        assert property (@(posedge clk) disable iff (rst) bus_irq == (irq_ena & irq_sts));
+a_owr_p:          assert property (@(posedge clk) disable iff (rst) owr_p == owr_pwr);
+a_owr_e:          assert property (@(posedge clk) disable iff (rst) owr_e == (owr_oen << owr_sel));
+a_owr_iln:        assert property (@(posedge clk) disable iff (rst) owr_iln == owr_i[owr_sel]);
+a_pls:            assert property (@(posedge clk) disable iff (rst) pls == (div == (owr_ovd ? cdr_o : cdr_n)));
+a_req_ovd:        assert property (@(posedge clk) disable iff (rst) req_ovd == (bus_wen_ctl_sts & bus_wdt[2]));
+a_dec_ren_ctl:    assert property (@(posedge clk) disable iff (rst) bus_ren_ctl_sts == (bus_ren & ~bus_adr[0]));
+a_dec_wen_ctl:    assert property (@(posedge clk) disable iff (rst) bus_wen_ctl_sts == (bus_wen & ~bus_adr[0]));
+a_dec_wen_pwr:    assert property (@(posedge clk) disable iff (rst) bus_wen_pwr_sel == (bus_wen & ~bus_adr[0]));
+a_dec_wen_cdrn:   assert property (@(posedge clk) disable iff (rst) bus_wen_cdr_n == (bus_wen & bus_adr[0]));
+a_dec_wen_cdro:   assert property (@(posedge clk) disable iff (rst) bus_wen_cdr_o == (bus_wen & bus_adr[0]));
+a_rdt_ctl_sts:    assert property (@(posedge clk) disable iff (rst) !bus_adr[0] |-> (bus_rdt[7:0] == {irq_ena, irq_sts, 1'b0, owr_pwr[0], owr_cyc, owr_ovd, owr_rst, owr_dat}));
+a_rdt_ctl_bit5:   assert property (@(posedge clk) disable iff (rst) !bus_adr[0] |-> (bus_rdt[5] == 1'b0));
+a_rdt_pwr_sel:    assert property (@(posedge clk) disable iff (rst) !bus_adr[0] |-> (bus_rdt[31:8] == 24'h0));
+a_rdt_cdr:        assert property (@(posedge clk) disable iff (rst) bus_adr[0] |-> (bus_rdt == {cdr_o, cdr_n}));
+
+// ---------------- timing values ----------------
+a_t_idl:          assert property (@(posedge clk) disable iff (rst) t_idl == (req_ovd ? T_IDLE_O : T_IDLE_N));
+a_t_rst:          assert property (@(posedge clk) disable iff (rst) t_rst == (req_ovd ? T_RSTL_O + T_RSTH_O : T_RSTL_N + T_RSTH_N));
+a_t_bit:          assert property (@(posedge clk) disable iff (rst) t_bit == (req_ovd ? T_DAT0_O + T_RCVR_O : T_DAT0_N + T_RCVR_N));
+a_t_rstp:         assert property (@(posedge clk) disable iff (rst) t_rstp == (owr_ovd ? T_RSTH_O - T_RSTP_O : T_RSTH_N - T_RSTP_N));
+a_t_rsth:         assert property (@(posedge clk) disable iff (rst) t_rsth == (owr_ovd ? T_RSTH_O : T_RSTH_N));
+a_t_dat0:         assert property (@(posedge clk) disable iff (rst) t_dat0 == (owr_ovd ? T_RCVR_O : T_RCVR_N));
+a_t_dat1:         assert property (@(posedge clk) disable iff (rst) t_dat1 == (owr_ovd ? T_DAT0_O - T_DAT1_O + T_RCVR_O : T_DAT0_N - T_DAT1_N + T_RCVR_N));
+a_t_bits:         assert property (@(posedge clk) disable iff (rst) t_bits == (owr_ovd ? T_DAT0_O - T_BITS_O + T_RCVR_O : T_DAT0_N - T_BITS_N + T_RCVR_N));
+a_t_zero:         assert property (@(posedge clk) disable iff (rst) t_zero == '0);
+
+// ---------------- clock divider ratio registers ----------------
+a_cdr_n_wr:       assert property (@(posedge clk) disable iff (rst) bus_wen_cdr_n |=> (cdr_n == $past(bus_wdt[15:0])));
+a_cdr_o_wr:       assert property (@(posedge clk) disable iff (rst) bus_wen_cdr_o |=> (cdr_o == $past(bus_wdt[31:16])));
+a_cdr_n_hold:     assert property (@(posedge clk) disable iff (rst) !bus_wen_cdr_n |=> $stable(cdr_n));
+a_cdr_o_hold:     assert property (@(posedge clk) disable iff (rst) !bus_wen_cdr_o |=> $stable(cdr_o));
+
+// ---------------- clock divider ----------------
+a_div_wen_clr:    assert property (@(posedge clk) disable iff (rst) bus_wen |=> (div == '0));
+a_div_pls_clr:    assert property (@(posedge clk) disable iff (rst) (!bus_wen && pls) |=> (div == '0));
+a_div_inc:        assert property (@(posedge clk) disable iff (rst) (!bus_wen && !pls && owr_cyc) |=> (div == $past(div) + 1'b1));
+a_div_hold:       assert property (@(posedge clk) disable iff (rst) (!bus_wen && !pls && !owr_cyc) |=> $stable(div));
+
+// ---------------- power register (OWN == 1) ----------------
+a_pwr_wr:         assert property (@(posedge clk) disable iff (rst) bus_wen_ctl_sts |=> (owr_pwr[0] == $past(bus_wdt[4])));
+a_pwr_hold:       assert property (@(posedge clk) disable iff (rst) !bus_wen_ctl_sts |=> $stable(owr_pwr));
+
+// ---------------- interrupt logic ----------------
+a_irq_ena_wr:     assert property (@(posedge clk) disable iff (rst) bus_wen_ctl_sts |=> (irq_ena == $past(bus_wdt[7])));
+a_irq_ena_hold:   assert property (@(posedge clk) disable iff (rst) !bus_wen_ctl_sts |=> $stable(irq_ena));
+a_irq_sts_wclr:   assert property (@(posedge clk) disable iff (rst) bus_wen_ctl_sts |=> !irq_sts);
+a_irq_sts_set:    assert property (@(posedge clk) disable iff (rst) (!bus_wen_ctl_sts && pls && (cnt == t_zero)) |=> irq_sts);
+a_irq_sts_rclr:   assert property (@(posedge clk) disable iff (rst) (!bus_wen_ctl_sts && !(pls && (cnt == t_zero)) && bus_ren_ctl_sts) |=> !irq_sts);
+a_irq_sts_hold:   assert property (@(posedge clk) disable iff (rst) (!bus_wen_ctl_sts && !(pls && (cnt == t_zero)) && !bus_ren_ctl_sts) |=> $stable(irq_sts));
+a_irq_sts_rise:   assert property (@(posedge clk) disable iff (rst) $rose(irq_sts) |-> $past(pls && (cnt == t_zero)));
+a_bus_irq_rise:   assert property (@(posedge clk) disable iff (rst) $rose(bus_irq) |-> ($past(pls && (cnt == t_zero)) || $past(bus_wen_ctl_sts)));
+
+// ---------------- overdrive / reset / data control bits ----------------
+a_ovd_wr:         assert property (@(posedge clk) disable iff (rst) bus_wen_ctl_sts |=> (owr_ovd == $past(bus_wdt[2])));
+a_ovd_hold:       assert property (@(posedge clk) disable iff (rst) !bus_wen_ctl_sts |=> $stable(owr_ovd));
+a_rst_bit_wr:     assert property (@(posedge clk) disable iff (rst) bus_wen_ctl_sts |=> (owr_rst == $past(bus_wdt[1])));
+a_rst_bit_hold:   assert property (@(posedge clk) disable iff (rst) !bus_wen_ctl_sts |=> $stable(owr_rst));
+a_dat_wr:         assert property (@(posedge clk) disable iff (rst) bus_wen_ctl_sts |=> (owr_dat == $past(bus_wdt[0])));
+a_dat_smp:        assert property (@(posedge clk) disable iff (rst) (!bus_wen_ctl_sts && pls && (cnt == t_zero)) |=> (owr_dat == $past(owr_smp)));
+a_dat_hold:       assert property (@(posedge clk) disable iff (rst) (!bus_wen_ctl_sts && !(pls && (cnt == t_zero))) |=> $stable(owr_dat));
+
+// ---------------- cycle status ----------------
+a_cyc_wr:         assert property (@(posedge clk) disable iff (rst) bus_wen_ctl_sts |=> (owr_cyc == $past(bus_wdt[3] & ~&bus_wdt[2:0])));
+a_cyc_start:      assert property (@(posedge clk) disable iff (rst) (bus_wen_ctl_sts && bus_wdt[3] && (bus_wdt[2:0] != 3'b111)) |=> owr_cyc);
+a_cyc_nostart:    assert property (@(posedge clk) disable iff (rst) (bus_wen_ctl_sts && (!bus_wdt[3] || (bus_wdt[2:0] == 3'b111))) |=> !owr_cyc);
+a_cyc_end:        assert property (@(posedge clk) disable iff (rst) (!bus_wen_ctl_sts && pls && (cnt == t_zero)) |=> !owr_cyc);
+a_cyc_hold:       assert property (@(posedge clk) disable iff (rst) (!bus_wen_ctl_sts && !(pls && (cnt == t_zero))) |=> $stable(owr_cyc));
+a_cyc_rise:       assert property (@(posedge clk) disable iff (rst) $rose(owr_cyc) |-> $past(bus_wen_ctl_sts));
+a_cyc_fall:       assert property (@(posedge clk) disable iff (rst) $fell(owr_cyc) |-> $past(bus_wen_ctl_sts || (pls && (cnt == t_zero))));
+
+// ---------------- cycle counter ----------------
+a_cnt_idl:        assert property (@(posedge clk) disable iff (rst) (bus_wen_ctl_sts && (bus_wdt[1:0] == 2'b11)) |=> (cnt == $past(t_idl) - 1'b1));
+a_cnt_rst:        assert property (@(posedge clk) disable iff (rst) (bus_wen_ctl_sts && (bus_wdt[1:0] == 2'b10)) |=> (cnt == $past(t_rst) - 1'b1));
+a_cnt_bit:        assert property (@(posedge clk) disable iff (rst) (bus_wen_ctl_sts && !bus_wdt[1]) |=> (cnt == $past(t_bit) - 1'b1));
+a_cnt_dec:        assert property (@(posedge clk) disable iff (rst) (!bus_wen_ctl_sts && pls) |=> (cnt == $past(cnt) - 1'b1));
+a_cnt_hold:       assert property (@(posedge clk) disable iff (rst) (!bus_wen_ctl_sts && !pls) |=> $stable(cnt));
+
+// ---------------- receive sampling ----------------
+a_smp_presence:   assert property (@(posedge clk) disable iff (rst) (pls && owr_rst && (cnt == t_rstp)) |=> (owr_smp == $past(owr_iln)));
+a_smp_data:       assert property (@(posedge clk) disable iff (rst) (pls && !owr_rst && (cnt == t_bits)) |=> (owr_smp == $past(owr_iln)));
+
+// ---------------- output enable ----------------
+a_oen_wr:         assert property (@(posedge clk) disable iff (rst) bus_wen_ctl_sts |=> (owr_oen == $past(~&bus_wdt[1:0])));
+a_oen_rst_rel:    assert property (@(posedge clk) disable iff (rst) (!bus_wen_ctl_sts && pls && owr_rst && (cnt == t_rsth)) |=> !owr_oen);
+a_oen_dat1_rel:   assert property (@(posedge clk) disable iff (rst) (!bus_wen_ctl_sts && pls && owr_dat && (cnt == t_dat1)) |=> !owr_oen);
+a_oen_dat0_rel:   assert property (@(posedge clk) disable iff (rst) (!bus_wen_ctl_sts && pls && (cnt == t_dat0)) |=> !owr_oen);
+a_oen_hold_npls:  assert property (@(posedge clk) disable iff (rst) (!bus_wen_ctl_sts && !pls) |=> $stable(owr_oen));
+a_oen_hold_pls:   assert property (@(posedge clk) disable iff (rst) (!bus_wen_ctl_sts && pls && !(owr_rst && (cnt == t_rsth)) && !(owr_dat && (cnt == t_dat1)) && (cnt != t_dat0)) |=> $stable(owr_oen));
+a_oen_rise:       assert property (@(posedge clk) disable iff (rst) $rose(owr_oen) |-> $past(bus_wen_ctl_sts));
