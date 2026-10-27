@@ -1,0 +1,22 @@
+   2 a_dec_ren_ctl: assert property (@(posedge clk) bus_ren_ctl_sts == (bus_ren && bus_adr[0] == 1'b0));
+   2 a_dec_wen_cdr_n: assert property (@(posedge clk) bus_wen_cdr_n == (bus_wen && bus_adr[0] == 1'b1));
+   2 a_dec_wen_cdr_o: assert property (@(posedge clk) bus_wen_cdr_o == (bus_wen && bus_adr[0] == 1'b1));
+   2 a_dec_wen_ctl: assert property (@(posedge clk) bus_wen_ctl_sts == (bus_wen && bus_adr[0] == 1'b0));
+   2 a_dec_wen_pwr: assert property (@(posedge clk) bus_wen_pwr_sel == (bus_wen && bus_adr[0] == 1'b0));
+   2 a_div_idle_hold: assert property (@(posedge clk) disable iff (rst) (!bus_wen && !pls && !owr_cyc) |=> $stable(div));
+   2 a_irq_sts_wr_clr: assert property (@(posedge clk) disable iff (rst) bus_wen_ctl_sts |=> !irq_sts);
+   2 a_ovd_hold: assert property (@(posedge clk) disable iff (rst) !bus_wen_ctl_sts |=> $stable(owr_ovd));
+   2 a_owr_iln: assert property (@(posedge clk) owr_iln == owr_i[owr_sel]);
+   2 a_owr_p: assert property (@(posedge clk) owr_p == owr_pwr);
+   2 a_pwr_hold: assert property (@(posedge clk) disable iff (rst) !bus_wen_ctl_sts |=> $stable(owr_pwr));
+   2 a_rst_cnt: assert property (@(posedge clk) rst |-> cnt == '0);
+   2 a_rst_div: assert property (@(posedge clk) rst |-> div == '0);
+   2 a_rst_hold: assert property (@(posedge clk) disable iff (rst) !bus_wen_ctl_sts |=> $stable(owr_rst));
+   2 a_rst_irq_ena: assert property (@(posedge clk) rst |-> !irq_ena);
+   2 a_rst_irq_sts: assert property (@(posedge clk) rst |-> !irq_sts);
+   3 a_cdr_n_hold: assert property (@(posedge clk) disable iff (rst) !bus_wen_cdr_n |=> $stable(cdr_n));
+   3 a_cdr_o_hold: assert property (@(posedge clk) disable iff (rst) !bus_wen_cdr_o |=> $stable(cdr_o));
+   3 a_cnt_hold: assert property (@(posedge clk) disable iff (rst) (!bus_wen_ctl_sts && !pls) |=> $stable(cnt));
+   3 a_irq_ena_hold: assert property (@(posedge clk) disable iff (rst) !bus_wen_ctl_sts |=> $stable(irq_ena));
+   3 a_pls_def: assert property (@(posedge clk) pls == (div == (owr_ovd ? cdr_o : cdr_n)));
+  12 

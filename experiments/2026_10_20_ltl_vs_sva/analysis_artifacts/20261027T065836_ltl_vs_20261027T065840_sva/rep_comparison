@@ -1,0 +1,36 @@
+2 !"bus_adr[0]" -> !"bus_rdt[5]"
+2 !"bus_adr[0]" -> ("bus_rdt[0]" <-> owr_dat)
+2 !"bus_adr[0]" -> ("bus_rdt[1]" <-> owr_rst)
+2 !"bus_adr[0]" -> ("bus_rdt[2]" <-> owr_ovd)
+2 !"bus_adr[0]" -> ("bus_rdt[3]" <-> owr_cyc)
+2 !"bus_adr[0]" -> ("bus_rdt[6]" <-> irq_sts)
+2 !"bus_adr[0]" -> ("bus_rdt[7]" <-> irq_ena)
+2 (owr_cyc & G(!rst & !bus_wen)) -> F !owr_cyc
+2 owr_iln <-> owr_i
+2 req_ovd <-> (bus_wen_ctl_sts & "bus_wdt[2]")
+4 owr_p <-> owr_pwr
+4 pls <-> ((owr_ovd & "div==cdr_o") | (!owr_ovd & "div==cdr_n"))
+5 bus_irq <-> (irq_ena & irq_sts)
+5 owr_e <-> owr_oen
+
+2 !bus_wen_ctl_sts |=> $stable(owr_ovd)                       
+2 !bus_wen_ctl_sts |=> $stable(owr_pwr)                       
+2 !bus_wen_ctl_sts |=> $stable(owr_rst)                       
+2 (!bus_wen && !pls && !owr_cyc) |=> $stable(div)             
+2 bus_ren_ctl_sts == (bus_ren && bus_adr[0] == 1'b0)          
+2 bus_wen_cdr_n == (bus_wen && bus_adr[0] == 1'b1)            
+2 bus_wen_cdr_o == (bus_wen && bus_adr[0] == 1'b1)            
+2 bus_wen_ctl_sts == (bus_wen && bus_adr[0] == 1'b0)          
+2 bus_wen_ctl_sts |=> !irq_sts                                
+2 bus_wen_pwr_sel == (bus_wen && bus_adr[0] == 1'b0)          
+2 owr_iln == owr_i[owr_sel]                                   
+2 owr_p == owr_pwr                                            
+2 rst |-> !irq_ena                                            
+2 rst |-> !irq_sts                                            
+2 rst |-> cnt == '0                                           
+2 rst |-> div == '0                                           
+3 !bus_wen_cdr_n |=> $stable(cdr_n)                           
+3 !bus_wen_cdr_o |=> $stable(cdr_o)                           
+3 !bus_wen_ctl_sts |=> $stable(irq_ena)                       
+3 (!bus_wen_ctl_sts && !pls) |=> $stable(cnt)                 
+3 pls == (div == (owr_ovd ? cdr_o : cdr_n))                   
