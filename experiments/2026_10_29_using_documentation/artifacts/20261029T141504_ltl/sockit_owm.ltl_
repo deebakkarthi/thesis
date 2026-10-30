@@ -1,0 +1,19 @@
+!ien & !irq & !cyc & !ovd & !rst & !pwr
+G (bus_irq <-> (irq & ien))
+G (!ien -> !bus_irq)
+G ((bus_wen & "bus_adr==0" & "bus_wdt[3]") -> X cyc)
+G ((bus_wen & "bus_adr==0") -> (("bus_wdt[7]" <-> X ien) & ("bus_wdt[2]" <-> X ovd) & ("bus_wdt[1]" <-> X rst)))
+G ((cyc & !pls & !(bus_wen & "bus_adr==0" & "bus_wdt[3]")) -> X cyc)
+G ((!cyc & !(bus_wen & "bus_adr==0" & "bus_wdt[3]")) -> X !cyc)
+(G F pls) -> G (cyc -> F (!cyc | (bus_wen & "bus_adr==0" & "bus_wdt[3]")))
+G ((cyc & X !cyc) -> X irq)
+G ((!irq & X irq) -> (cyc & X !cyc))
+G ((irq & !(bus_ren & "bus_adr==0")) -> X irq)
+G ((bus_ren & "bus_adr==0" & !(cyc & X !cyc)) -> X !irq)
+G ((!cyc & !(bus_wen & "bus_adr==0")) -> (dat <-> X dat))
+G (!cyc -> "owr_e==0")
+G "$onehot0(owr_e)"
+G ((cyc & rst & dat) -> "owr_e==0")
+G ((bus_wen & "bus_adr==0" & "bus_wdt[3]" & !("bus_wdt[1]" & "bus_wdt[0]")) -> X "owr_e!=0")
+G "(owr_p & owr_e)==0"
+G ((bus_wen & "bus_adr==0" & "bus_wdt[3]") -> X (cyc U (!cyc & irq)) | X (cyc W (bus_wen & "bus_adr==0" & "bus_wdt[3]")))
