@@ -1,0 +1,44 @@
+// SystemVerilog Assertions for sockit_owm (1-wire master), derived from sockit_owr.pdf.
+// Assumes the 32-bit bus interface (BDW=32, BAW=1): address 0 = {power[31:16], unused[15:12], select[11:8], ctl[7:0]}, address 1 = {cdr_o[31:16], cdr_n[15:0]}.
+// ctl bits: [7]=ien, [6]=irq, [5]=reserved, [4]=pwr, [3]=cyc, [2]=ovd, [1]=rst, [0]=dat. Clock is clk, synchronous reset is rst (active high).
+// Assertions are meant to be bound into sockit_owm, so the parameters OWN, OVD_E, CDR_E, CDR_N and CDR_O are visible.
+ast_rst_owr_e_idle: assert property (@(posedge clk) rst |=> (owr_e == '0));
+ast_rst_owr_p_zero: assert property (@(posedge clk) rst |=> (owr_p == '0));
+ast_rst_irq_clear: assert property (@(posedge clk) rst |=> !bus_irq);
+ast_rst_ctl_values: assert property (@(posedge clk) $fell(rst) ##0 (bus_ren && bus_adr == 1'b0) |-> (bus_rdt[7] == 1'b0) && (bus_rdt[6] == 1'b0) && (bus_rdt[4] == 1'b0) && (bus_rdt[3] == 1'b0) && (bus_rdt[2] == 1'b0) && (bus_rdt[1] == 1'b0));
+ast_rst_select_zero: assert property (@(posedge clk) $fell(rst) ##0 (bus_ren && bus_adr == 1'b0) && (OWN > 1) |-> (bus_rdt[11:8] == 4'd0));
+ast_rst_cdr_values: assert property (@(posedge clk) $fell(rst) ##0 (bus_ren && bus_adr == 1'b1) |-> (bus_rdt[15:0] == 16'(CDR_N)) && (bus_rdt[31:16] == 16'(CDR_O)));
+ast_no_simultaneous_rw: assert property (@(posedge clk) disable iff (rst) !(bus_wen && bus_ren));
+ast_owr_e_known: assert property (@(posedge clk) disable iff (rst) !$isunknown(owr_e));
+ast_owr_p_known: assert property (@(posedge clk) disable iff (rst) !$isunknown(owr_p));
+ast_bus_irq_known: assert property (@(posedge clk) disable iff (rst) !$isunknown(bus_irq));
+ast_rdt_known_on_read: assert property (@(posedge clk) disable iff (rst) bus_ren |-> !$isunknown(bus_rdt[4:1]) && !$isunknown(bus_rdt[7:6]));
+ast_single_line_active: assert property (@(posedge clk) disable iff (rst) $onehot0(owr_e));
+ast_owr_e_only_selected: assert property (@(posedge clk) disable iff (rst) (bus_ren && bus_adr == 1'b0) && (OWN > 1) |-> ((owr_e & ~(OWN'(1) << bus_rdt[11:8])) == '0));
+ast_no_cycle_on_powered_line: assert property (@(posedge clk) disable iff (rst) ((owr_e & owr_p) == '0));
+ast_owr_e_idle_when_no_cycle: assert property (@(posedge clk) disable iff (rst) (bus_ren && bus_adr == 1'b0) && !bus_rdt[3] |-> (owr_e == '0));
+ast_irq_requires_ien: assert property (@(posedge clk) disable iff (rst) (bus_ren && bus_adr == 1'b0) |-> (bus_irq == (bus_rdt[7] && bus_rdt[6])));
+ast_irq_disabled_no_interrupt: assert property (@(posedge clk) disable iff (rst) (bus_wen && bus_adr == 1'b0 && !bus_wdt[7]) |=> !bus_irq);
+ast_irq_cleared_by_read: assert property (@(posedge clk) disable iff (rst) (bus_ren && bus_adr == 1'b0 && !bus_rdt[3]) |=> !bus_irq);
+ast_irq_status_cleared_by_read: assert property (@(posedge clk) disable iff (rst) (bus_ren && bus_adr == 1'b0 && !bus_rdt[3]) ##1 (bus_ren && bus_adr == 1'b0) |-> !bus_rdt[6]);
+ast_irq_stays_until_read: assert property (@(posedge clk) disable iff (rst) bus_irq && !(bus_ren && bus_adr == 1'b0) && !bus_wen |=> bus_irq);
+ast_irq_rises_without_read: assert property (@(posedge clk) disable iff (rst) $rose(bus_irq) |-> !$past(bus_ren && bus_adr == 1'b0));
+ast_cyc_set_after_start: assert property (@(posedge clk) disable iff (rst) (bus_wen && bus_adr == 1'b0 && bus_wdt[3] && !(bus_wdt[2] && bus_wdt[1] && bus_wdt[0])) ##1 (bus_ren && bus_adr == 1'b0) |-> bus_rdt[3]);
+ast_cyc_not_set_without_start: assert property (@(posedge clk) disable iff (rst) (bus_wen && bus_adr == 1'b0 && !bus_wdt[3]) ##1 (bus_ren && bus_adr == 1'b0) |-> !bus_rdt[3]);
+ast_cycle_start_drives_line: assert property (@(posedge clk) disable iff (rst) (bus_wen && bus_adr == 1'b0 && bus_wdt[3] && !bus_wdt[1] && ((OWN > 1) ? !bus_wdt[16 + bus_wdt[11:8]] : !bus_wdt[4])) |=> (owr_e[(OWN > 1) ? $past(bus_wdt[11:8]) : 0] == 1'b1));
+ast_reset_start_drives_line: assert property (@(posedge clk) disable iff (rst) (bus_wen && bus_adr == 1'b0 && bus_wdt[3] && bus_wdt[1] && !bus_wdt[0] && ((OWN > 1) ? !bus_wdt[16 + bus_wdt[11:8]] : !bus_wdt[4])) |=> (owr_e[(OWN > 1) ? $past(bus_wdt[11:8]) : 0] == 1'b1));
+ast_idle_cycle_no_drive: assert property (@(posedge clk) disable iff (rst) (bus_wen && bus_adr == 1'b0 && bus_wdt[3] && bus_wdt[1] && bus_wdt[0]) |=> (owr_e == '0) until (bus_wen && bus_adr == 1'b0));
+ast_no_start_no_drive: assert property (@(posedge clk) disable iff (rst) (bus_ren && bus_adr == 1'b0 && !bus_rdt[3]) |=> (owr_e == '0) until (bus_wen && bus_adr == 1'b0 && bus_wdt[3]));
+ast_cycle_terminates: assert property (@(posedge clk) disable iff (rst) (bus_wen && bus_adr == 1'b0 && bus_wdt[3]) |=> s_eventually ((owr_e == '0) || (bus_wen && bus_adr == 1'b0)));
+ast_ctl_readback: assert property (@(posedge clk) disable iff (rst) (bus_wen && bus_adr == 1'b0) ##1 (bus_ren && bus_adr == 1'b0) |-> (bus_rdt[7] == $past(bus_wdt[7])) && (bus_rdt[1] == $past(bus_wdt[1])));
+ast_ovd_readback: assert property (@(posedge clk) disable iff (rst) (bus_wen && bus_adr == 1'b0 && OVD_E != 0) ##1 (bus_ren && bus_adr == 1'b0) |-> (bus_rdt[2] == $past(bus_wdt[2])));
+ast_ovd_disabled_reads_zero: assert property (@(posedge clk) disable iff (rst) (bus_ren && bus_adr == 1'b0 && OVD_E == 0) |-> (bus_rdt[2] == 1'b0));
+ast_select_readback: assert property (@(posedge clk) disable iff (rst) (bus_wen && bus_adr == 1'b0 && OWN > 1) ##1 (bus_ren && bus_adr == 1'b0) |-> (bus_rdt[11:8] == $past(bus_wdt[11:8])));
+ast_power_reg_to_owr_p: assert property (@(posedge clk) disable iff (rst) (bus_wen && bus_adr == 1'b0 && OWN > 1) |=> (owr_p == $past(bus_wdt[16 +: OWN])));
+ast_pwr_bit_to_owr_p: assert property (@(posedge clk) disable iff (rst) (bus_wen && bus_adr == 1'b0 && OWN == 1) |=> (owr_p[0] == $past(bus_wdt[4])));
+ast_owr_p_stable_without_write: assert property (@(posedge clk) disable iff (rst) !(bus_wen && bus_adr == 1'b0) |=> $stable(owr_p));
+ast_pwr_read_selected_line: assert property (@(posedge clk) disable iff (rst) (bus_ren && bus_adr == 1'b0 && OWN > 1) |-> (bus_rdt[4] == owr_p[bus_rdt[11:8]]));
+ast_pwr_read_single_line: assert property (@(posedge clk) disable iff (rst) (bus_ren && bus_adr == 1'b0 && OWN == 1) |-> (bus_rdt[4] == owr_p[0]));
+ast_cdr_const_when_disabled: assert property (@(posedge clk) disable iff (rst) (bus_ren && bus_adr == 1'b1 && CDR_E == 0) |-> (bus_rdt[15:0] == 16'(CDR_N)) && (bus_rdt[31:16] == 16'(CDR_O)));
+ast_cdr_readback_when_enabled: assert property (@(posedge clk) disable iff (rst) (bus_wen && bus_adr == 1'b1 && CDR_E != 0) ##1 (bus_ren && bus_adr == 1'b1) |-> (bus_rdt == $past(bus_wdt)));
+ast_cdr_write_only_when_idle: assert property (@(posedge clk) disable iff (rst) (bus_wen && bus_adr == 1'b1) |-> (owr_e == '0));
