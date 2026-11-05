@@ -1,0 +1,23 @@
+#+TITLE: =uniqltl=
+
+Given a file with Linear Temporal Logic (LTL) formulas, one on each line,
+=uniqltl= returns the number of unique ones.
+
+* Dependencies
+- =spot-2.16.2=
+- =doxygen=
+- =graphviz=
+  
+
+
+* Building =spot=
+#+BEGIN_SRC bash
+  ./configure --prefix=$(realpath ../opt) --disable-python
+  make -j$(nproc)
+  make -j$(nproc) check
+  make -j$(nproc) install
+#+END_SRC
+
+* =LICENSE=
+The contents of this directory and its children are released
+under GPL v3 as it links with =spot=.
