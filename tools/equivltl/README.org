@@ -1,11 +1,10 @@
-#+TITLE: =uniqltl=
+#+TITLE: =equivltl=
 
 Given a file with Linear Temporal Logic (LTL) formulas, one on each line,
-=uniqltl= returns the number of unique ones.
+=equivltl= returns the number of unique ones.
 
 * Dependencies
-- =spot-2.16.2=
-- =doxygen=
+- =spot-2.16.2= =doxygen=
 - =graphviz=
   
 
