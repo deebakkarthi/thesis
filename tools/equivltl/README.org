@@ -1,14 +1,12 @@
 #+TITLE: =equivltl=
 
-Given a file with Linear Temporal Logic (LTL) formulas, one on each line,
-=equivltl= returns the number of unique ones.
+=equivltl= groups a list of Linear Temporal Logic (LTL) formulas based on
+equivalence.
 
 * Dependencies
 - =spot-2.16.2= =doxygen=
 - =graphviz=
   
-
-
 * Building =spot=
 #+BEGIN_SRC bash
   ./configure --prefix=$(realpath ../opt) --disable-python
