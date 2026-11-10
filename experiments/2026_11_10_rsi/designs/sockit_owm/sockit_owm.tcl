@@ -1,6 +1,6 @@
 clear -all
 
-check_cov -init -type mutation -model all
+check_cov -init -type mutation -model all -toggle_no_ports
 
 analyze -v2k -f sockit_owm.f
 
@@ -15,8 +15,10 @@ reset rst==1'b1
 
 sanity_check -analyze simple_reset
 
-prove -all
+prove -all -per_property_time_limit 1m
 
 check_cov -measure
 
 report -json -file ./metrics/[exec date +%Y%m%dT%H%M%S].json
+
+exit

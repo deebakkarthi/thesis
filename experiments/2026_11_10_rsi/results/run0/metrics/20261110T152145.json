@@ -1,0 +1,384 @@
+{
+    "cov": {
+        "app_schema_version": "2.0.0",
+        "task": [
+            {
+                "assert_summary": [],
+                "coverage_summary": [
+                    {
+                        "branch_checker_coverage_local": {
+                            "checked": 0,
+                            "excluded": 0,
+                            "total": 85,
+                            "unchecked": 0,
+                            "undetectable": 85,
+                            "unprocessed": 0
+                        },
+                        "branch_coi_coverage_local": {
+                            "checked": 0,
+                            "excluded": 0,
+                            "total": 85,
+                            "undetectable": 85,
+                            "unprocessed": 0
+                        },
+                        "branch_formal_coverage_local": {
+                            "covered_and_checked": 0,
+                            "deadcode": 0,
+                            "excluded": 0,
+                            "total": 85,
+                            "uncovered_or_unchecked": 0,
+                            "unprocessed": 0,
+                            "unreachable_or_undetectable": 85
+                        },
+                        "branch_stimuli_coverage_local": {
+                            "covered": 0,
+                            "deadcode": 0,
+                            "excluded": 0,
+                            "total": 85,
+                            "uncovered": 0,
+                            "unprocessed": 0,
+                            "unreachable": 0
+                        },
+                        "checker_coverage_local": {
+                            "checked": 0,
+                            "excluded": 0,
+                            "total": 372,
+                            "unchecked": 0,
+                            "undetectable": 372,
+                            "unprocessed": 0
+                        },
+                        "code_checker_coverage_local": {
+                            "checked": 0,
+                            "excluded": 0,
+                            "total": 372,
+                            "unchecked": 0,
+                            "undetectable": 372,
+                            "unprocessed": 0
+                        },
+                        "code_coi_coverage_local": {
+                            "checked": 0,
+                            "excluded": 0,
+                            "total": 372,
+                            "undetectable": 372,
+                            "unprocessed": 0
+                        },
+                        "code_formal_coverage_local": {
+                            "covered_and_checked": 0,
+                            "deadcode": 0,
+                            "excluded": 0,
+                            "total": 372,
+                            "uncovered_or_unchecked": 0,
+                            "unprocessed": 0,
+                            "unreachable_or_undetectable": 372
+                        },
+                        "code_stimuli_coverage_local": {
+                            "covered": 0,
+                            "deadcode": 0,
+                            "excluded": 0,
+                            "total": 372,
+                            "uncovered": 0,
+                            "unprocessed": 0,
+                            "unreachable": 0
+                        },
+                        "coi_coverage_local": {
+                            "checked": 0,
+                            "excluded": 0,
+                            "total": 372,
+                            "undetectable": 372,
+                            "unprocessed": 0
+                        },
+                        "covergroup_formal_coverage_local": {
+                            "covered_and_checked": 0,
+                            "deadcode": 0,
+                            "excluded": 0,
+                            "total": 0,
+                            "uncovered_or_unchecked": 0,
+                            "unprocessed": 0,
+                            "unreachable_or_undetectable": 0
+                        },
+                        "covergroup_stimuli_coverage_local": {
+                            "covered": 0,
+                            "deadcode": 0,
+                            "excluded": 0,
+                            "total": 0,
+                            "uncovered": 0,
+                            "unprocessed": 0,
+                            "unreachable": 0
+                        },
+                        "detailed": [],
+                        "expression_checker_coverage_local": {
+                            "checked": 0,
+                            "excluded": 0,
+                            "total": 0,
+                            "unchecked": 0,
+                            "undetectable": 0,
+                            "unprocessed": 0
+                        },
+                        "expression_coi_coverage_local": {
+                            "checked": 0,
+                            "excluded": 0,
+                            "total": 0,
+                            "undetectable": 0,
+                            "unprocessed": 0
+                        },
+                        "expression_formal_coverage_local": {
+                            "covered_and_checked": 0,
+                            "deadcode": 0,
+                            "excluded": 0,
+                            "total": 0,
+                            "uncovered_or_unchecked": 0,
+                            "unprocessed": 0,
+                            "unreachable_or_undetectable": 0
+                        },
+                        "expression_stimuli_coverage_local": {
+                            "covered": 0,
+                            "deadcode": 0,
+                            "excluded": 0,
+                            "total": 0,
+                            "uncovered": 0,
+                            "unprocessed": 0,
+                            "unreachable": 0
+                        },
+                        "formal_coverage_local": {
+                            "covered_and_checked": 0,
+                            "deadcode": 0,
+                            "excluded": 0,
+                            "total": 372,
+                            "uncovered_or_unchecked": 0,
+                            "unprocessed": 0,
+                            "unreachable_or_undetectable": 372
+                        },
+                        "fsm_checker_coverage_local": {
+                            "checked": 0,
+                            "excluded": 0,
+                            "total": 0,
+                            "unchecked": 0,
+                            "undetectable": 0,
+                            "unprocessed": 0
+                        },
+                        "fsm_coi_coverage_local": {
+                            "checked": 0,
+                            "excluded": 0,
+                            "total": 0,
+                            "undetectable": 0,
+                            "unprocessed": 0
+                        },
+                        "fsm_formal_coverage_local": {
+                            "covered_and_checked": 0,
+                            "deadcode": 0,
+                            "excluded": 0,
+                            "total": 0,
+                            "uncovered_or_unchecked": 0,
+                            "unprocessed": 0,
+                            "unreachable_or_undetectable": 0
+                        },
+                        "fsm_stimuli_coverage_local": {
+                            "covered": 0,
+                            "deadcode": 0,
+                            "excluded": 0,
+                            "total": 0,
+                            "uncovered": 0,
+                            "unprocessed": 0,
+                            "unreachable": 0
+                        },
+                        "functional_formal_coverage_local": {
+                            "covered_and_checked": 0,
+                            "deadcode": 0,
+                            "excluded": 0,
+                            "total": 0,
+                            "uncovered_or_unchecked": 0,
+                            "unprocessed": 0,
+                            "unreachable_or_undetectable": 0
+                        },
+                        "functional_stimuli_coverage_local": {
+                            "covered": 0,
+                            "deadcode": 0,
+                            "excluded": 0,
+                            "total": 0,
+                            "uncovered": 0,
+                            "unprocessed": 0,
+                            "unreachable": 0
+                        },
+                        "instance_name": "sockit_owm",
+                        "module": "sockit_owm",
+                        "parent_instance_name": "",
+                        "property_formal_coverage_local": {
+                            "covered_and_checked": 0,
+                            "deadcode": 0,
+                            "excluded": 0,
+                            "total": 0,
+                            "uncovered_or_unchecked": 0,
+                            "unprocessed": 0,
+                            "unreachable_or_undetectable": 0
+                        },
+                        "property_stimuli_coverage_local": {
+                            "covered": 0,
+                            "deadcode": 0,
+                            "excluded": 0,
+                            "total": 0,
+                            "uncovered": 0,
+                            "unprocessed": 0,
+                            "unreachable": 0
+                        },
+                        "statement_checker_coverage_local": {
+                            "checked": 0,
+                            "excluded": 0,
+                            "total": 35,
+                            "unchecked": 0,
+                            "undetectable": 35,
+                            "unprocessed": 0
+                        },
+                        "statement_coi_coverage_local": {
+                            "checked": 0,
+                            "excluded": 0,
+                            "total": 35,
+                            "undetectable": 35,
+                            "unprocessed": 0
+                        },
+                        "statement_formal_coverage_local": {
+                            "covered_and_checked": 0,
+                            "deadcode": 0,
+                            "excluded": 0,
+                            "total": 35,
+                            "uncovered_or_unchecked": 0,
+                            "unprocessed": 0,
+                            "unreachable_or_undetectable": 35
+                        },
+                        "statement_stimuli_coverage_local": {
+                            "covered": 0,
+                            "deadcode": 0,
+                            "excluded": 0,
+                            "total": 35,
+                            "uncovered": 0,
+                            "unprocessed": 0,
+                            "unreachable": 0
+                        },
+                        "stimuli_coverage_local": {
+                            "covered": 0,
+                            "deadcode": 0,
+                            "excluded": 0,
+                            "total": 372,
+                            "uncovered": 0,
+                            "unprocessed": 0,
+                            "unreachable": 0
+                        },
+                        "toggle_checker_coverage_local": {
+                            "checked": 0,
+                            "excluded": 0,
+                            "total": 252,
+                            "unchecked": 0,
+                            "undetectable": 252,
+                            "unprocessed": 0
+                        },
+                        "toggle_coi_coverage_local": {
+                            "checked": 0,
+                            "excluded": 0,
+                            "total": 252,
+                            "undetectable": 252,
+                            "unprocessed": 0
+                        },
+                        "toggle_formal_coverage_local": {
+                            "covered_and_checked": 0,
+                            "deadcode": 0,
+                            "excluded": 0,
+                            "total": 252,
+                            "uncovered_or_unchecked": 0,
+                            "unprocessed": 0,
+                            "unreachable_or_undetectable": 252
+                        },
+                        "toggle_stimuli_coverage_local": {
+                            "covered": 0,
+                            "deadcode": 0,
+                            "excluded": 0,
+                            "total": 252,
+                            "uncovered": 0,
+                            "unprocessed": 0,
+                            "unreachable": 0
+                        }
+                    }
+                ],
+                "module_coverage_summary": [],
+                "name": "<embedded>"
+            }
+        ]
+    },
+    "date": "2026-11-10T15:21:45-0500",
+    "fpv": {
+        "app_schema_version": "1.0.0",
+        "summary": {
+            "asserts": {
+                "ar_cex": 0,
+                "bounded_proven_auto": 0,
+                "bounded_proven_user": 0,
+                "cex": 0,
+                "error": 0,
+                "marked_proven": 0,
+                "processing": 0,
+                "proven": 0,
+                "total": 0,
+                "undetermined": 0,
+                "unprocessed": 0
+            },
+            "assumes": {
+                "approved": 0,
+                "cag": 0,
+                "temporary": 0,
+                "total": 0
+            },
+            "covers": {
+                "ar_covered": 0,
+                "bounded_unreachable_user": 0,
+                "covered": 0,
+                "error": 0,
+                "processing": 0,
+                "total": 0,
+                "undetermined": 0,
+                "unprocessed": 0,
+                "unreachable": 0
+            }
+        },
+        "task": {
+            "<embedded>": {
+                "results": [],
+                "summary": {
+                    "asserts": {
+                        "ar_cex": 0,
+                        "bounded_proven_auto": 0,
+                        "bounded_proven_user": 0,
+                        "cex": 0,
+                        "error": 0,
+                        "marked_proven": 0,
+                        "processing": 0,
+                        "proven": 0,
+                        "total": 0,
+                        "undetermined": 0,
+                        "unprocessed": 0
+                    },
+                    "assumes": {
+                        "approved": 0,
+                        "cag": 0,
+                        "temporary": 0,
+                        "total": 0
+                    },
+                    "covers": {
+                        "ar_covered": 0,
+                        "bounded_unreachable_user": 0,
+                        "covered": 0,
+                        "error": 0,
+                        "processing": 0,
+                        "total": 0,
+                        "undetermined": 0,
+                        "unprocessed": 0,
+                        "unreachable": 0
+                    }
+                }
+            }
+        }
+    },
+    "host": "node1-s.ece.Virginia.EDU",
+    "operating_system": "Linux64 4.18.0-372.26.1.el8_6.x86_64",
+    "top_level_schema_version": "1.0.0",
+    "user": "brg8ve",
+    "version": "2026.03 FCS 64 bits",
+    "workdir": "/net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi"
+}
