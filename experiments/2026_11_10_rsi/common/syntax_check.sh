@@ -1,9 +1,9 @@
 #!/bin/bash
-# Compile-only check of a workspace: runs the design tcl up to and including
-# `elaborate`, then exits. Never proves anything, never writes metrics.
-# usage: common/syntax_check.sh <workspace_dir>
+# Compile-only check: analyzes and elaborates the RTL together with the SVA
+# checker in this directory, then exits.
+# usage: ./check_syntax.sh [workspace_dir]   (default: the script's directory)
 set -uo pipefail
-ws=$(cd "$1" && pwd)
+ws=$(cd "${1:-$(dirname "$0")}" && pwd)
 tcl=$(ls "$ws"/*.tcl | head -1)
 tmp=$(mktemp -d)
 trap 'rm -rf "$tmp"' EXIT

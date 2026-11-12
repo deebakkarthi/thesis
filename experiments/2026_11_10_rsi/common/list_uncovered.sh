@@ -1,5 +1,5 @@
 #!/bin/bash
-# Master-only debug: re-run an evaluated run and list every formal-coverage
+# Optimizer-only debug: re-run an evaluated run and list every formal-coverage
 # item of the top instance that is NOT covered_and_checked, with its source
 # location and expression. Writes <run_dir>/uncovered.txt.
 # usage: common/list_uncovered.sh <results/iterN/<design>/runK>
