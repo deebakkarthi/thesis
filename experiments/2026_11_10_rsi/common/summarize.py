@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""Aggregate results/iter*/summary.tsv into RESULTS.md (mean and min over runs).
-usage: common/summarize.py            (rewrites RESULTS.md at the repo root)
+"""Aggregate <run>/iter*/summary.tsv into <run>/RESULTS.md (mean and min over runs).
+usage: common/summarize.py <run>
 """
-import csv, glob, os, re, statistics as st
+import csv, glob, os, re, statistics as st, sys
 from collections import defaultdict
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.path.abspath(sys.argv[1])
 pct = lambda n, t: 100.0 * n / t if t else float("nan")
 
 rows = []
-for tsv in sorted(glob.glob(os.path.join(ROOT, "results", "iter*", "summary.tsv")),
+for tsv in sorted(glob.glob(os.path.join(ROOT, "iter*", "summary.tsv")),
                   key=lambda p: int(re.search(r"iter(\d+)", p).group(1))):
     it = int(re.search(r"iter(\d+)", tsv).group(1))
     groups = defaultdict(list)
