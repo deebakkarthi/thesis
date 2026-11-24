@@ -1,0 +1,905 @@
+Jasper Apps 2026.03 FCS 64 bits 2026.03.26 12:48:29 UTC
+
+Any disclosure about the Cadence Design Systems software or its use
+model to any third party violates the written Non-Disclosure Agreement
+between Cadence Design Systems, Inc. and the customer.
+
+THIS SOFTWARE CONTAINS CONFIDENTIAL INFORMATION AND TRADE SECRETS OF
+CADENCE DESIGN SYSTEMS, INC. USE, DISCLOSURE, OR REPRODUCTION IS
+PROHIBITED WITHOUT THE PRIOR EXPRESS WRITTEN PERMISSION OF CADENCE
+DESIGN SYSTEMS, INC.
+
+Copyright (C) 2000-2026 Cadence Design Systems, Inc. All Rights
+Reserved.  Unpublished -- rights reserved under the copyright laws of
+the United States.
+
+This product includes software developed by others and redistributed
+according to license agreement. See doc/third_party_readme.txt for
+further details.
+
+RESTRICTED RIGHTS LEGEND
+
+Use, duplication, or disclosure by the Government is subject to
+restrictions as set forth in subparagraph (c) (1) (ii) of the Rights in
+Technical Data and Computer Software clause at DFARS 252.227-7013 or
+subparagraphs (c) (1) and (2) of Commercial Computer Software -- Restricted
+Rights at 48 CFR 52.227-19, as applicable.
+
+
+                          Cadence Design Systems, Inc.
+                          2655 Seely Avenue
+                          San Jose, CA 95134
+                          Phone: 408.943.1234
+
+For technical assistance visit http://support.cadence.com.
+
+Jasper Apps Analysis Session - /var/home/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/jgproject/sessionLogs/session_0
+
+INFO: successfully checked out licenses "jasper_interactive" and "jasper_fao".
+INFO: reading configuration file "/var/home/brg8ve/.config/cadence/jasper.conf".
+% clear -all
+INFO (IPF121): Cleared environment completely for new design analysis.
+% 
+% check_cov -init -type coi -model all -toggle_no_ports
+INFO (ICD011): Message "VERI-9104" has been changed from "error" to "warning" level.
+% 
+% analyze -v2k -f sockit_owm.f
+INFO (INL011): Processing "-f" file "/net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/sockit_owm.f".
+[-- (VERI-1482)] Analyzing Verilog file '/net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./rtl/sockit_owm.v'
+% 
+% if { [file exists sockit_owm_sva.f] == 1 } {
+	analyze -sv -f sockit_owm_sva.f
+}
+INFO (INL011): Processing "-f" file "/net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/sockit_owm_sva.f".
+[-- (VERI-1482)] Analyzing Verilog file '/app7/cadence/jasper/current/lib/verilog/packages/std/std.sv' into library 'std'
+[-- (VERI-1482)] Analyzing Verilog file '/net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./sva/sockit_owm_sva.sv'
+% 
+% # Blackbox missing modules instead of erroring out
+% elaborate -bbox 1
+[INFO (HIER-8002)] /net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./rtl/sockit_owm.v(419): Disabling old hierarchical reference handler
+[INFO (VERI-1018)] /net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./sva/sockit_owm_sva.sv(17): compiling module 'sockit_owm_sva'
+[WARN (VERI-1209)] /net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./sva/sockit_owm_sva.sv(95): expression size 32 truncated to fit in target size 8
+[WARN (VERI-1209)] /net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./sva/sockit_owm_sva.sv(96): expression size 32 truncated to fit in target size 8
+[WARN (VERI-1209)] /net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./sva/sockit_owm_sva.sv(97): expression size 32 truncated to fit in target size 8
+[WARN (VERI-1209)] /net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./sva/sockit_owm_sva.sv(99): expression size 32 truncated to fit in target size 8
+[WARN (VERI-1209)] /net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./sva/sockit_owm_sva.sv(101): expression size 32 truncated to fit in target size 8
+[WARN (VERI-1209)] /net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./sva/sockit_owm_sva.sv(106): expression size 32 truncated to fit in target size 1
+[WARN (VERI-1209)] /net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./sva/sockit_owm_sva.sv(107): expression size 32 truncated to fit in target size 9
+[INFO (VERI-1018)] /net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./rtl/sockit_owm.v(50): compiling module 'sockit_owm'
+[WARN (VERI-1060)] /net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./rtl/sockit_owm.v(320): 'initial' construct is ignored
+[WARN (VERI-1209)] /net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./rtl/sockit_owm.v(184): expression size 32 truncated to fit in target size 8
+[WARN (VERI-1209)] /net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./rtl/sockit_owm.v(186): expression size 32 truncated to fit in target size 8
+[WARN (VERI-1209)] /net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./rtl/sockit_owm.v(188): expression size 32 truncated to fit in target size 8
+[WARN (VERI-1209)] /net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./rtl/sockit_owm.v(191): expression size 32 truncated to fit in target size 8
+[WARN (VERI-1209)] /net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./rtl/sockit_owm.v(193): expression size 32 truncated to fit in target size 8
+[WARN (VERI-1209)] /net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./rtl/sockit_owm.v(196): expression size 32 truncated to fit in target size 8
+[WARN (VERI-1209)] /net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./rtl/sockit_owm.v(198): expression size 32 truncated to fit in target size 8
+[WARN (VERI-1209)] /net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./rtl/sockit_owm.v(200): expression size 32 truncated to fit in target size 8
+[WARN (VERI-1209)] /net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./rtl/sockit_owm.v(297): expression size 32 truncated to fit in target size 16
+[WARN (VERI-1209)] /net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./rtl/sockit_owm.v(384): expression size 32 truncated to fit in target size 8
+[WARN (VERI-1209)] /net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./rtl/sockit_owm.v(385): expression size 32 truncated to fit in target size 8
+[WARN (VERI-9005)] /net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./rtl/sockit_owm.v(417): 2-bit index expression 'owr_sel' is larger than the required 1 bits. This might lead to an out-of-bound access
+[WARN (VDB-1002)] /net/marysrock.ece.Virginia.EDU/maryisan/users/brg8ve/.local/src/thesis/experiments/2026_11_10_rsi/results/20261123T190328/iter1/sockit_owm/run1/./rtl/sockit_owm.v(148): net 'owr_sel[-1]' does not have a driver
+INFO (ISW003): Top module name is "sockit_owm".
+INFO (INL208): Elaboration synthesis summary:
+  Single run mode                         On
+  Advanced Incremental run mode           Off
+  Late hierarchical reference connection  On
+  Number of analyzed Verilog modules      3 (4 synthesized)
+  Number of analyzed VHDL entities        0 (0 synthesized)
+  Number of analyzed files                3  
+  Number of netlists                      4 (1 packages) (0 loaded from cache)
+  Pipeline                                On (2 pipelined netlists)
+INFO (IPM034): Property Status database configuration set to: memory.
+INFO (INL003): Clearing all state information (assumes, stopats, and so forth).
+INFO (ICOV005): Invoking auto-setup: Creating a coverage model with the following parameters:
+    model = Branch Functional Expression Toggle Statement
+    include_x_cover_items = False
+    exclude_empty_branch_cover_items = False
+    exclude_cover_expression_calculation = False
+    enable_proof_core = False
+    skip_ternary_branches = False
+    type = coi
+    regexp = False
+    toggle_mutation_type = StopAt
+    statement_type_blocking = Falsestatement_type_non_blocking = False
+INFO (ICOV008): Adding all assertions to the coverage database.
+INFO (ICOV009): Finished auto-setup.
+sockit_owm
+[<embedded>] % clock clk
+[<embedded>] % reset rst==1'b1
+INFO (IPM031): Clearing proof results of all properties.
+INFO (IRS006): Current reset condition is "rst".
+[<embedded>] % 
+[<embedded>] % sanity_check -analyze simple_reset
+[<embedded>] % 
+[<embedded>] % prove -all -per_property_time_limit 30s -time_limit 2m
+Bcustom1: Custom engine code is hT3Nm7hPr1Vp3Di1Ra2USNIGL4JypRnLKLAdF6JAyuavO2JfGCiY9OZJhcAcOUnLx5xwNdhILGrAWX9s+z2WDkKwNR7tAfClBEjRFVQeq6DU54boFgEA
+Mpcustom2: Custom engine code is hT3NZbhP9fmY2AbBQnsjfOxn6c+6e6yL+/e8fZFmaQrnlgEA
+Ncustom3: Custom engine code is hT3Ng7hPPfiYQOTDZ3qhYOwGAM51eA+J/FjkM5shLioAsqhgLR4Ft+O1BuKG6ilQ83B9tLXSl+CwjiTMAQA
+AMcustom4: Custom engine code is hT3Ng7hP/feYQOTDZ3qhYOwGAM51eA+J/FjkM5shLioAsqhgLR4Ft+O1BuKG6ilQ83B9tLXSmmqwm7g9AQA
+INFO (IPF036): Starting proof on task: "<embedded>", 66 properties to prove with 0 already proven/unreachable
+INFO (IRS029): Starting reset analysis: phase 1 of 4.
+INFO (IRS030): Running reset analysis: phase 2 of 4.
+INFO (IRS031): Running reset analysis: phase 3 of 4.
+INFO (IRS020): Starting the reset analysis simulation with a limit of 100 iterations (phase 4 of 4).
+INFO (ISIM006): Running simulation: {mode = single, probe = all}.
+INFO (IRS024): Reset iterations 0 to 4 analyzed.
+INFO (ISIM008): Simulation is processing trace data. Total number of nets in analysis 1703.
+INFO (IRS018): Reset analysis simulation executed for 3 iterations. Assigned values for 99 of 100 design flops, 0 of 0 design latches, 227 of 271 internal elements.
+INFO (IRS039): Reset analysis complete.
+INFO (IPF031): Settings used for proof thread 2:
+    orchestration                      = on
+    time_limit                         = 120s
+    per_property_time_limit            = 30s * 10 ^ scan
+    engine_mode                        = auto
+    proofgrid_per_engine_max_jobs      = 1
+    max engine jobs                    = auto
+    proofgrid_mode                     = local
+    proofgrid_cloud_file_upload        = auto
+    proofgrid_restarts                 = 10
+2.0.PRE: A proof was found: No trace exists. [0.00 s]
+INFO (IPF057): 2.0.PRE: The property "sockit_owm.u_sockit_owm_sva.a_rst_regs" was proven in 0.00 s.
+2.0.PRE: A proof was found: No trace exists. [0.00 s]
+INFO (IPF051): 2.0.PRE: The cover property "sockit_owm.u_sockit_owm_sva.a_rst_regs:precondition1" was proven unreachable in 0.00 s.
+AMcustom5: Custom engine code is hT3N1rhP11/52HrFRS21ROp2LOjVTgPvT8L8BGXHgLhaIuqtT4nARFjUqrBL+7pLmaTOzBepZW/Jm8SSrHDybSQtoNiO3y43wk+dEoWlsZizu97Fih6O6lPVG/LpWP5SsUPwlGagLNa1FKEFvwVXyX7//8prySbvSxIHXr5er+z4RAEA
+Ncustom6: Custom engine code is hT3OXrhPByJp3TrFSTLhUmMH4KVtJgmTCnNDF46yMXOKY48m4LS5nE7yBzFjA7kDuwO/GhGUpEPiky3p3wmPn3dJZHxFMsafSoObRzSC+tn7sEY0WbTdZ/FV4hL3MYH/b1CIUvXSWR4wqEoVLsmMOD4xIPT4lI1LO6ZCO7PnnWQuLwetnvKlrXx6wCW/A+x+enqslg1YPobi4wEF/EvbzOvcTYdJvl2s4H2yZg2b2ofAVN5WvhWk1HoBAA
+ADcustom7: Custom engine code is hT3Nv7hPv1752HrFRa2kROx2f/ECJeZB2AZsLdlO8VwmIuqtT4nIDFXclhg+O+o+DMmQCekbheGk0kK28laA9gaOFDXsQp29J3X615HY1IPHJWd6FUFvCHjO+p1k652b5JJvZlShNpGlGSXAiQe/mEAj6tEBAA
+Tricustom8: Custom engine code is hT3Nu7hPt1752DvFRa0kNDiyIV97VyejwM9C/jCLJjdPvusZONHY42VYUy0Q1ZotnhcVtNc56tJ5wbxv6V2+XpdsaSlHck5vfnbYjdwj1OECy9U+7oSQ0SZE3g5ayD+Phuh4odCJTjeKa2k4elM9ldQfkAEA
+Gcustom9: Custom engine code is hT3NibhPDfeYQADBZnYcglOvK9Pfd7EOeniIqP8jNsyIqInncipMGcUXqAadachREE9F2PwhBUZUNw5kHnd4JdXkamORRgEA
+C2custom10: Custom engine code is hT3NirhPjfWYQADBZnYcglOvK9Pfd7EOeniIqP8jNsyIqInncgkrYMMXCYbdK0dUjZIF9d4cJ0rHoBDjwVLBKuG86XYVV00BAA
+AGcustom11: Custom engine code is hT3NirhP/fmYQADBZnYcglOvK9Pfd7EOeniIqP8jNsyIqInnckcwYMMXCYbdK0dUjZIF9d4cJ0rHoBDjwVLBKuHEZnZByh0BAA
+Bcustom12: Custom engine code is hT3NjrhPDfiYQADBZnYcglOvK9PfWxFtenjIyBqfrgr7if/jL/yPOuK1BAflEcW0DxNH2eDIoezN2gxlQFg81RZtiWXh7aiTAidvAQA
+Ncustom13: Custom engine code is hT3NR7hPByFp3TrFSTLhUmMH4KWtJglTyV/c51BHEeZWamnJv767nE6PCak26bd3gf3XGN3rIRheufhDieCJQVISo+gNYUKhiUedBKGtsP/a18svAnlMJZudHxDFwK5ufsyoxsIyiAeSY2oi3tEuoDHr5gw42DFKAG3PqO3CEsl8Azzdt3pl5nGA1Ifv2H02eYsFzWb/nfp8PMb3F0krE/EgBcm8TD9Div8BAA
+Tricustom14: Custom engine code is hT3Nu7hP3fiYQADBZnYcglNHp9bfd7EOeniIqP/ji8sGLQu8yhsFO+wxJ+O+R0bU8g/IewXFomyos+viQnWc2xYNYmMqpo3i40O7DaZR7qfp4YqNx26KRvQ/qx0BAA
+2.0.PRE: A proof was found: No trace exists. [0.00 s]
+INFO (IPF057): 2.0.PRE: The property "sockit_owm.u_sockit_owm_sva.a_rst_outs" was proven in 0.00 s.
+2.0.PRE: A proof was found: No trace exists. [0.00 s]
+INFO (IPF051): 2.0.PRE: The cover property "sockit_owm.u_sockit_owm_sva.a_rst_outs:precondition1" was proven unreachable in 0.00 s.
+2.0.PRE: A proof was found: No trace exists. [0.00 s]
+INFO (IPF057): 2.0.PRE: The property "sockit_owm.u_sockit_owm_sva.a_rst_cdr" was proven in 0.00 s.
+2.0.PRE: A proof was found: No trace exists. [0.00 s]
+INFO (IPF051): 2.0.PRE: The cover property "sockit_owm.u_sockit_owm_sva.a_rst_cdr:precondition1" was proven unreachable in 0.00 s.
+2: Found proofs for 6 properties in preprocessing
+2: Using multistage preprocessing
+2: Starting reduce
+2: Finished reduce in 0.002s
+2.0.PRE: Performing Proof Simplification...
+2.0.Hp: clocks: 1, declared: 1, looping: 0, posedge: 1, negedge: 0, noedge: 0, bothedge: 0
+2.0.Hp: Proof Simplification Iteration 1	[0.00 s]
+2.0.PRE: A trace with 1 cycles was found. [0.00 s]
+INFO (IPM034): Trace database configuration set to: disk.
+INFO (IPF047): 2.0.PRE: The cover property "sockit_owm.u_sockit_owm_sva.a_cnt_idle_hold:precondition1" was covered in 1 cycles in 0.00 s.
+2.0.PRE: A trace with 1 cycles was found. [0.45 s]
+INFO (IPF047): 2.0.PRE: The cover property "sockit_owm.u_sockit_owm_sva.a_dat_hold_idle:precondition1" was covered in 1 cycles in 0.00 s.
+2.0.PRE: A trace with 1 cycles was found. [0.47 s]
+INFO (IPF047): 2.0.PRE: The cover property "sockit_owm.u_sockit_owm_sva.asm_cdr_idle:precondition1" was covered in 1 cycles in 0.00 s.
+INFO (IPF047): 2.0.PRE: The cover property "sockit_owm.u_sockit_owm_sva.a_pwr_hold:precondition1" was covered in 1 cycles in 0.00 s.
+2.0.PRE: A proof was found: No trace exists. [0.00 s]
+INFO (IPF057): 2.0.PRE: The property "sockit_owm.u_sockit_owm_sva.a_irq_wr_clr" was proven in 0.00 s.
+2.0.PRE: A proof was found: No trace exists. [0.00 s]
+INFO (IPF057): 2.0.PRE: The property "sockit_owm.u_sockit_owm_sva.a_idle_no_drive" was proven in 0.00 s.
+2.0.Hp: Proof Simplification Iteration 2	[0.51 s]
+2.0.Hp: Proof Simplification Iteration 3	[0.51 s]
+2.0.Hp: Proof Simplification Iteration 4	[0.52 s]
+2.0.Hp: Proof Simplification Iteration 5	[0.52 s]
+2.0.Hp: Proof Simplification Iteration 6	[0.52 s]
+2.0.Hp: Proof Simplification Iteration 7	[0.52 s]
+2.0.Hp: Proof Simplification Iteration 8	[0.52 s]
+2.0.Hp: Proof Simplification Iteration 9	[0.52 s]
+2.0.Hp: Proof Simplification Iteration 10	[0.52 s]
+2.0.PRE: Proof Simplification completed in 0.53 s
+2.0.Hp: Identified and disabled 9 duplicated targets.
+2: About to start ProofGrid in its own thread with a limit of 10000 pending notifications and a limit of 10 traces.
+2: ============================= ProofGrid (v3) start =============================
+2: ProofGrid usable level: 48
+2: Initial ProofGrid level: 1
+2: ProofGrid is starting event handling
+2: Computed task hash in 0.00s
+2.0.Hp: Proofgrid shell started at 2532533@node2-s.ece.Virginia.EDU(local) jg_2532415_node2-s.ece.Virginia.EDU_1
+2: ProofGrid usable level: 48
+2: ProofGrid usable level: 48
+2.0.Hp: Connected successfully after 0.00s.
+2: ProofGrid usable level: 48
+2: ProofGrid usable level: 4294967295
+2.0.Hp: clocks: 1, declared: 1, looping: 0, posedge: 1, negedge: 0, noedge: 0, bothedge: 0
+2: ProofGrid usable level: 4294967295
+2.0.Bm: Proofgrid shell started at 2532549@node2-s.ece.Virginia.EDU(local) jg_2532415_node2-s.ece.Virginia.EDU_1
+2.0.Ht: Proofgrid shell started at 2532548@node2-s.ece.Virginia.EDU(local) jg_2532415_node2-s.ece.Virginia.EDU_1
+2.0.Bm: Connected successfully after 0.00s.
+2.0.Ht: Connected successfully after 0.00s.
+2.0.Hp: Trace Attempt  1	[0.05 s]
+2.0.Hp: A trace with 1 cycles was found. [0.05 s]
+INFO (IPF047): 2.0.Hp: The cover property "sockit_owm.u_sockit_owm_sva.a_irq_rd_clr:precondition1" was covered in 1 cycles in 0.01 s.
+INFO (IPF047): 2.0.Hp: The cover property "sockit_owm.u_sockit_owm_sva.a_cdr_hold:precondition1" was covered in 1 cycles in 0.01 s.
+2.0.Hp: A trace with 1 cycles was found. [0.06 s]
+INFO (IPF047): 2.0.Hp: The cover property "sockit_owm.u_sockit_owm_sva.a_irq_wr_clr:precondition1" was covered in 1 cycles in 0.10 s.
+INFO (IPF047): 2.0.Hp: The cover property "sockit_owm.u_sockit_owm_sva.a_idle_no_drive:precondition1" was covered in 1 cycles in 0.10 s.
+INFO (IPF047): 2.0.Hp: The cover property "sockit_owm.u_sockit_owm_sva.a_zero_idle_nocyc:precondition1" was covered in 1 cycles in 0.10 s.
+INFO (IPF047): 2.0.Hp: The cover property "sockit_owm.u_sockit_owm_sva.a_pwr_out:precondition1" was covered in 1 cycles in 0.10 s.
+2.0.Hp: A trace with 1 cycles was found. [0.06 s]
+INFO (IPF047): 2.0.Hp: The cover property "sockit_owm.u_sockit_owm_sva.a_no_drive_cyc0:precondition1" was covered in 1 cycles in 0.16 s.
+2.0.Hp: A trace with 1 cycles was found. [0.06 s]
+INFO (IPF047): 2.0.Hp: The cover property "sockit_owm.u_sockit_owm_sva.a_cyc_start:precondition1" was covered in 1 cycles in 0.24 s.
+2.0.Mpcustom2: Proofgrid shell started at 2532550@node2-s.ece.Virginia.EDU(local) jg_2532415_node2-s.ece.Virginia.EDU_1
+2.0.Mpcustom2: Connected successfully after 0.00s.
+2.0.Oh: Proofgrid shell started at 2532579@node2-s.ece.Virginia.EDU(local) jg_2532415_node2-s.ece.Virginia.EDU_1
+2.0.L: Proofgrid shell started at 2532581@node2-s.ece.Virginia.EDU(local) jg_2532415_node2-s.ece.Virginia.EDU_1
+2.0.Oh: Connected successfully after 0.00s.
+2.0.L: Connected successfully after 0.00s.
+2.0.Ht: clocks: 1, declared: 1, looping: 0, posedge: 1, negedge: 0, noedge: 0, bothedge: 0
+2.0.Bm: clocks: 1, declared: 1, looping: 0, posedge: 1, negedge: 0, noedge: 0, bothedge: 0
+2.0.Bm: Trace Attempt  1	[0.04 s]
+2.0.Ht: Trace Attempt  1	[0.04 s]
+2.0.Bm: Trace Attempt  2	[0.04 s]
+2.0.Ht: Trace Attempt  2	[0.04 s]
+2.0.Ht: A trace with 2 cycles was found. [0.04 s]
+INFO (IPF047): 2.0.Ht: The cover property "sockit_owm.u_sockit_owm_sva.a_rd_ien:precondition1" was covered in 2 cycles in 0.04 s.
+INFO (IPF047): 2.0.Ht: The cover property "sockit_owm.u_sockit_owm_sva.a_rd_pwr:precondition1" was covered in 2 cycles in 0.04 s.
+INFO (IPF047): 2.0.Ht: The cover property "sockit_owm.u_sockit_owm_sva.a_rd_ovd:precondition1" was covered in 2 cycles in 0.04 s.
+INFO (IPF047): 2.0.Ht: The cover property "sockit_owm.u_sockit_owm_sva.a_rd_rst:precondition1" was covered in 2 cycles in 0.04 s.
+INFO (IPF047): 2.0.Ht: The cover property "sockit_owm.u_sockit_owm_sva.a_rd_dat:precondition1" was covered in 2 cycles in 0.04 s.
+INFO (IPF047): 2.0.Ht: The cover property "sockit_owm.u_sockit_owm_sva.a_rd_cyc:precondition1" was covered in 2 cycles in 0.04 s.
+2.0.Ht: A trace with 2 cycles was found. [0.05 s]
+INFO (IPF047): 2.0.Ht: The cover property "sockit_owm.u_sockit_owm_sva.a_cdr_rd_back:precondition1" was covered in 2 cycles in 0.10 s.
+2: ProofGrid is temporarily paused because there are too many pending traces.
+2: ProofGrid is resuming to work after pausing for 0.15s. The amount of pending traces decreased.
+2.0.Bm: A trace with 2 cycles was found. [0.05 s]
+INFO (IPF055): 2.0.Bm: A counterexample (cex) with 2 cycles was found for the property "sockit_owm.u_sockit_owm_sva.a_no_drive_cyc0" in 0.20 s.
+2.0.Bm: A trace with 2 cycles was found. [0.05 s]
+INFO (IPF055): 2.0.Bm: A counterexample (cex) with 2 cycles was found for the property "sockit_owm.u_sockit_owm_sva.a_e_mirror_oen" in 0.25 s.
+INFO (IPF047): 2.0.Bm: The cover property "sockit_owm.u_sockit_owm_sva.a_cyc_hold:precondition1" was covered in 2 cycles in 0.25 s.
+INFO (IPF047): 2.0.Bm: The cover property "sockit_owm.u_sockit_owm_sva.a_oen_hold:precondition1" was covered in 2 cycles in 0.25 s.
+INFO (IPF047): 2.0.Bm: The cover property "sockit_owm.u_sockit_owm_sva.a_dat_hold_cyc:precondition1" was covered in 2 cycles in 0.25 s.
+2.0.Bm: A trace with 2 cycles was found. [0.05 s]
+INFO (IPF047): 2.0.Bm: The cover property "sockit_owm.u_sockit_owm_sva.a_oen_release:precondition1" was covered in 2 cycles in 0.29 s.
+2.0.Bm: Trace Attempt  3	[0.05 s]
+2: ProofGrid is temporarily paused because there are too many pending traces.
+2: ProofGrid is resuming to work after pausing for 0.10s. The amount of pending traces decreased.
+2.0.Bm: A trace with 3 cycles was found. [0.06 s]
+INFO (IPF055): 2.0.Bm: A counterexample (cex) with 3 cycles was found for the property "sockit_owm.u_sockit_owm_sva.a_irq_only_end" in 0.30 s.
+INFO (IPF047): 2.0.Bm: The cover property "sockit_owm.u_sockit_owm_sva.a_irq_only_end:precondition1" was covered in 3 cycles in 0.30 s.
+2.0.Bm: A trace with 3 cycles was found. [0.06 s]
+INFO (IPF055): 2.0.Bm: A counterexample (cex) with 3 cycles was found for the property "sockit_owm.u_sockit_owm_sva.a_cnt_idle_hold" in 0.38 s.
+2: ProofGrid is temporarily paused because there are too many pending traces.
+2: ProofGrid is resuming to work after pausing for 0.19s. The amount of pending traces decreased.
+2.0.Bm: A trace with 3 cycles was found. [0.06 s]
+INFO (IPF055): 2.0.Bm: A counterexample (cex) with 3 cycles was found for the property "sockit_owm.u_sockit_owm_sva.a_dat_hold_idle" in 0.43 s.
+2.0.Bm: A trace with 3 cycles was found. [0.07 s]
+INFO (IPF047): 2.0.Bm: The cover property "sockit_owm.u_sockit_owm_sva.a_sample_slot:precondition1" was covered in 3 cycles in 0.47 s.
+2.0.Bm: Trace Attempt  4	[0.07 s]
+2.0.Bm: A trace with 4 cycles was found. [0.08 s]
+INFO (IPF055): 2.0.Bm: A counterexample (cex) with 4 cycles was found for the property "sockit_owm.u_sockit_owm_sva.a_sample_slot" in 0.51 s.
+2.0.Bm: Trace Attempt  5	[0.08 s]
+2.0.Mpcustom2: clocks: 1, declared: 1, looping: 0, posedge: 1, negedge: 0, noedge: 0, bothedge: 0
+2.0.Mpcustom2: Trace Attempt  1	[0.04 s]
+2.0.Mpcustom2: Trace Attempt  2	[0.05 s]
+2.0.Mpcustom2: A proof was found: No trace exists. [0.00 s]
+INFO (IPF057): 2.0.Mpcustom2: The property "sockit_owm.u_sockit_owm_sva.a_rd_ien" was proven in 0.00 s.
+2.0.Mpcustom2: A proof was found: No trace exists. [0.00 s]
+INFO (IPF057): 2.0.Mpcustom2: The property "sockit_owm.u_sockit_owm_sva.a_rd_pwr" was proven in 0.00 s.
+2.0.Mpcustom2: A proof was found: No trace exists. [0.00 s]
+INFO (IPF057): 2.0.Mpcustom2: The property "sockit_owm.u_sockit_owm_sva.a_rd_ovd" was proven in 0.00 s.
+2.0.Mpcustom2: A proof was found: No trace exists. [0.00 s]
+INFO (IPF057): 2.0.Mpcustom2: The property "sockit_owm.u_sockit_owm_sva.a_rd_rst" was proven in 0.00 s.
+2.0.Mpcustom2: A proof was found: No trace exists. [0.00 s]
+INFO (IPF057): 2.0.Mpcustom2: The property "sockit_owm.u_sockit_owm_sva.a_rd_dat" was proven in 0.00 s.
+2.0.Mpcustom2: A proof was found: No trace exists. [0.05 s]
+INFO (IPF057): 2.0.Mpcustom2: The property "sockit_owm.u_sockit_owm_sva.a_rd_cyc" was proven in 0.00 s.
+2.0.Mpcustom2: A proof was found: No trace exists. [0.00 s]
+INFO (IPF057): 2.0.Mpcustom2: The property "sockit_owm.u_sockit_owm_sva.a_irq_rd_clr" was proven in 0.00 s.
+2.0.Mpcustom2: A proof was found: No trace exists. [0.00 s]
+INFO (IPF057): 2.0.Mpcustom2: The property "sockit_owm.u_sockit_owm_sva.a_irq_end_wins_rd" was proven in 0.00 s.
+2.0.Mpcustom2: A proof was found: No trace exists. [0.00 s]
+INFO (IPF057): 2.0.Mpcustom2: The property "sockit_owm.u_sockit_owm_sva.a_irq_set_end" was proven in 0.00 s.
+2.0.Mpcustom2: A proof was found: No trace exists. [0.00 s]
+INFO (IPF057): 2.0.Mpcustom2: The property "sockit_owm.u_sockit_owm_sva.a_irq_masked" was proven in 0.00 s.
+2.0.Mpcustom2: A proof was found: No trace exists. [0.05 s]
+INFO (IPF057): 2.0.Mpcustom2: The property "sockit_owm.u_sockit_owm_sva.a_cdr_rd_back" was proven in 0.00 s.
+2.0.Mpcustom2: A proof was found: No trace exists. [0.05 s]
+INFO (IPF057): 2.0.Mpcustom2: The property "sockit_owm.u_sockit_owm_sva.a_cdr_hold" was proven in 0.00 s.
+2.0.Mpcustom2: A proof was found: No trace exists. [0.05 s]
+INFO (IPF057): 2.0.Mpcustom2: The property "sockit_owm.u_sockit_owm_sva.a_pwr_out" was proven in 0.00 s.
+2.0.Mpcustom2: A proof was found: No trace exists. [0.00 s]
+INFO (IPF057): 2.0.Mpcustom2: The property "sockit_owm.u_sockit_owm_sva.a_pwr_hold" was proven in 0.00 s.
+2.0.Mpcustom2: A proof was found: No trace exists. [0.05 s]
+INFO (IPF057): 2.0.Mpcustom2: The property "sockit_owm.u_sockit_owm_sva.a_zero_idle_nocyc" was proven in 0.00 s.
+2.0.Mpcustom2: A proof was found: No trace exists. [0.05 s]
+INFO (IPF057): 2.0.Mpcustom2: The property "sockit_owm.u_sockit_owm_sva.a_cyc_start" was proven in 0.00 s.
+2.0.Mpcustom2: A proof was found: No trace exists. [0.00 s]
+INFO (IPF057): 2.0.Mpcustom2: The property "sockit_owm.u_sockit_owm_sva.a_dat_hold_cyc" was proven in 0.00 s.
+2.0.Mpcustom2: Trace Attempt  3	[0.13 s]
+2.0.Mpcustom2: Trace Attempt  3	[0.16 s]
+2.0.Ht: Trace Attempt  3	[0.05 s]
+2.0.Ht: Trace Attempt  4	[0.06 s]
+2.0.Ht: Trace Attempt  5	[0.07 s]
+2: ProofGrid is temporarily paused because there are too many pending traces.
+2: ProofGrid is resuming to work after pausing for 0.08s. The amount of pending traces decreased.
+2.0.Bm: Trace Attempt  9	[0.20 s]
+2.0.Bm: A trace with 9 cycles was found. [0.23 s]
+INFO (IPF047): 2.0.Bm: The cover property "sockit_owm.u_sockit_owm_sva.a_irq_end_wins_rd:precondition1" was covered in 9 cycles in 0.54 s.
+INFO (IPF047): 2.0.Bm: The cover property "sockit_owm.u_sockit_owm_sva.a_irq_set_end:precondition1" was covered in 9 cycles in 0.54 s.
+INFO (IPF047): 2.0.Bm: The cover property "sockit_owm.u_sockit_owm_sva.a_cyc_end:precondition1" was covered in 9 cycles in 0.54 s.
+2.0.Bm: A trace with 9 cycles was found. [0.23 s]
+INFO (IPF047): 2.0.Bm: The cover property "sockit_owm.u_sockit_owm_sva.a_irq_masked:precondition1" was covered in 9 cycles in 0.60 s.
+2: ProofGrid is temporarily paused because there are too many pending traces.
+2: ProofGrid is resuming to work after pausing for 0.14s. The amount of pending traces decreased.
+2.0.Bm: Trace Attempt 10	[0.25 s]
+2.0.Mpcustom2: Trace Attempt  4	[0.20 s]
+2.0.Mpcustom2: Trace Attempt  5	[0.22 s]
+2.0.Mpcustom2: Trace Attempt  3	[0.24 s]
+2.0.Mpcustom2: Trace Attempt  4	[0.27 s]
+2.0.Mpcustom2: Trace Attempt  5	[0.27 s]
+2.0.Mpcustom2: Trace Attempt  3	[0.38 s]
+2.0.Mpcustom2: Trace Attempt  4	[0.42 s]
+2.0.Mpcustom2: Trace Attempt  5	[0.45 s]
+2.0.N: Proofgrid shell started at 2532599@node2-s.ece.Virginia.EDU(local) jg_2532415_node2-s.ece.Virginia.EDU_1
+2.0.N: Connected successfully after 0.11s.
+2.0.B: Proofgrid shell started at 2532601@node2-s.ece.Virginia.EDU(local) jg_2532415_node2-s.ece.Virginia.EDU_1
+2.0.B: Connected successfully after 0.11s.
+2.0.AM: Proofgrid shell started at 2532604@node2-s.ece.Virginia.EDU(local) jg_2532415_node2-s.ece.Virginia.EDU_1
+2.0.AM: Connected successfully after 0.11s.
+2.0.Hp: Trace Attempt  2	[0.30 s]
+2.0.Hp: Trace Attempt  3	[0.41 s]
+2.0.Hp: Trace Attempt  4	[0.54 s]
+2.0.Oh: clocks: 1, declared: 1, looping: 0, posedge: 1, negedge: 0, noedge: 0, bothedge: 0
+2.0.Oh: bwd trail(1): 1 0.0259542s
+2.0.Oh: All properties either determined or skipped. [0.49 s]
+2.0.L: clocks: 1, declared: 1, looping: 0, posedge: 1, negedge: 0, noedge: 0, bothedge: 0
+2.0.L: Using trace diversification with seed 1 (0.05)
+2.0.L: Using LRU state removal heuristic
+2.0.L: Using states from traces to { (reset) }
+2.0.L: Trace Attempt  3	[0.47 s]
+2.0.L: Using states from traces to { sockit_owm.u_sockit_owm_sva.a_cdr_rd_back:precondition1 (2) }
+2.0.L: Trace Attempt  3	[0.48 s]
+2.0.L: Using states from traces to { sockit_owm.u_sockit_owm_sva.a_cyc_hold:precondition1 (3) }
+2.0.L: Trace Attempt  3	[0.49 s]
+2.0.L: Using states from traces to { sockit_owm.u_sockit_owm_sva.a_e_mirror_oen <4> }
+2.0.L: Trace Attempt  3	[0.50 s]
+2.0.L: Using states from traces to { sockit_owm.u_sockit_owm_sva.a_rd_ien:precondition1 (5) }
+2.0.L: Trace Attempt  3	[0.51 s]
+2.0.L: Using states from traces to { sockit_owm.u_sockit_owm_sva.a_sample_slot:precondition1 (6) }
+2.0.L: Trace Attempt  3	[0.51 s]
+2.0.L: Using states from traces to { sockit_owm.u_sockit_owm_sva.a_sample_slot <7> }
+2.0.L: Trace Attempt  3	[0.52 s]
+2.0.L: Trace Attempt  4	[0.53 s]
+2.0.L: Using states from traces to { sockit_owm.u_sockit_owm_sva.a_no_drive_cyc0 <9> }
+2.0.L: Trace Attempt  3	[0.54 s]
+2.0.L: Using states from traces to { sockit_owm.u_sockit_owm_sva.a_cnt_idle_hold <10> }
+2.0.L: Trace Attempt  3	[0.55 s]
+2.0.L: Trace Attempt  4	[0.56 s]
+2.0.L: Trace Attempt  5	[0.57 s]
+2.0.B: clocks: 1, declared: 1, looping: 0, posedge: 1, negedge: 0, noedge: 0, bothedge: 0
+2.0.B: Next scan (0) will use per property time limit: 30s * 10 ^ 0 = 30s
+2.0.B: Starting proof for property "sockit_owm.u_sockit_owm_sva.a_sample_presence"	[0.00 s].
+2.0.N: clocks: 1, declared: 1, looping: 0, posedge: 1, negedge: 0, noedge: 0, bothedge: 0
+2.0.AM: clocks: 1, declared: 1, looping: 0, posedge: 1, negedge: 0, noedge: 0, bothedge: 0
+2.0.B: Trace Attempt  1	[0.00 s]
+2.0.B: Trace Attempt  2	[0.00 s]
+2.0.Oh: Exited with Success (@ 0.85 s)
+2.0.N: Next scan (0) will use per property time limit: 30s * 10 ^ 0 = 30s
+2.0.N: Starting proof for property "sockit_owm.u_sockit_owm_sva.a_sample_presence"	[0.00 s].
+2.0.N: Trace Attempt  1	[0.00 s]
+2.0.AM: Next scan (0) will use per property time limit: 30s * 10 ^ 0 = 30s
+2.0.AM: Starting proof for property "sockit_owm.u_sockit_owm_sva.a_sample_presence"	[0.00 s].
+2.0.N: Trace Attempt  2	[0.00 s]
+2.0.N: Trace Attempt  3	[0.00 s]
+2.0.AM: Trace Attempt  1	[0.00 s]
+2.0.AM: Trace Attempt  2	[0.00 s]
+2.0.N: Trace Attempt  3	[0.00 s]
+2.0.B: Trace Attempt  3	[0.00 s]
+2.0.AM: Trace Attempt  3	[0.00 s]
+2.0.AM: Trace Attempt  4	[0.00 s]
+2.0.N: Trace Attempt  4	[0.00 s]
+2.0.B: Trace Attempt  4	[0.00 s]
+2.0.AM: Trace Attempt  5	[0.00 s]
+2.0.N: Trace Attempt  4	[0.00 s]
+2.0.B: Trace Attempt  5	[0.00 s]
+2.0.N: Trace Attempt  5	[0.00 s]
+2.0.AM: Trace Attempt  1	[0.01 s]
+2.0.N: Trace Attempt  1	[0.01 s]
+2.0.AM: Trace Attempt  2	[0.01 s]
+2.0.AM: Trace Attempt  3	[0.01 s]
+2.0.N: Trace Attempt  2	[0.01 s]
+2.0.N: Trace Attempt  3	[0.01 s]
+2.0.AM: Trace Attempt  5	[0.01 s]
+2.0.N: Trace Attempt  4	[0.01 s]
+2.0.N: Trace Attempt  5	[0.01 s]
+2.0.L: Using states from traces to { sockit_owm.u_sockit_owm_sva.a_irq_only_end <17> }
+2.0.L: Trace Attempt  3	[0.69 s]
+2.0.L: Trace Attempt  4	[0.70 s]
+2.0.Mpcustom2: Trace Attempt  3	[0.75 s]
+2.0.L: Trace Attempt  5	[0.71 s]
+2.0.Mpcustom2: Trace Attempt  4	[0.75 s]
+2: ProofGrid usable level: 4294967295
+2.0.Mpcustom2: Trace Attempt  5	[0.85 s]
+2.0.L: Using states from traces to { sockit_owm.u_sockit_owm_sva.a_irq_set_end:precondition1 (25) }
+2.0.L: Trace Attempt  3	[0.82 s]
+2.0.L: Trace Attempt  4	[0.82 s]
+2.0.L: Trace Attempt  5	[0.83 s]
+2.0.L: Using states from traces to { sockit_owm.u_sockit_owm_sva.a_irq_masked:precondition1 (33) }
+2.0.L: Trace Attempt  3	[0.93 s]
+2.0.L: Trace Attempt  4	[0.93 s]
+2.0.L: Trace Attempt  5	[0.94 s]
+2.0.L: Using states from traces to { sockit_owm.u_sockit_owm_sva.a_irq_end_wins_rd:precondition1 (41) }
+2.0.L: Trace Attempt  3	[1.03 s]
+2.0.L: Trace Attempt  4	[1.04 s]
+2.0.L: Trace Attempt  5	[1.05 s]
+2.0.AM: Trace Attempt  1	[0.52 s]
+2.0.AM: Trace Attempt  2	[0.52 s]
+2.0.AM: Trace Attempt  3	[0.52 s]
+2.0.AM: Trace Attempt  5	[0.52 s]
+2.0.L: Using states from traces to { sockit_owm.u_sockit_owm_sva.a_dat_hold_idle <50> }
+2.0.L: Trace Attempt  3	[1.18 s]
+2.0.L: Trace Attempt  4	[1.19 s]
+2.0.L: Trace Attempt  5	[1.19 s]
+2.0.Mpcustom2: Trace Attempt  4	[1.49 s]
+2.0.Mpcustom2: Trace Attempt  5	[1.51 s]
+2.0.B: Trace Attempt 60	[1.81 s]
+2.0.B: A trace with 60 cycles was found. [1.90 s]
+INFO (IPF055): 2.0.B: A counterexample (cex) with 60 cycles was found for the property "sockit_owm.u_sockit_owm_sva.a_sample_presence" in 1.82 s.
+INFO (IPF047): 2.0.B: The cover property "sockit_owm.u_sockit_owm_sva.a_sample_presence:precondition1" was covered in 59 cycles in 1.82 s by the incidental trace "sockit_owm.u_sockit_owm_sva.a_sample_presence".
+2.0.B: Stopped processing property "sockit_owm.u_sockit_owm_sva.a_sample_presence"	[1.82 s].
+2.0.N: Trace Attempt 41	[1.87 s]
+2.0.N: Stopped processing property "sockit_owm.u_sockit_owm_sva.a_sample_presence"	[1.82 s].
+2.0.N: Starting proof for property "sockit_owm.u_sockit_owm_sva.a_cyc_hold"	[0.00 s].
+2.0.B: Starting proof for property "sockit_owm.u_sockit_owm_sva.a_cyc_hold"	[0.00 s].
+2.0.N: Trace Attempt  1	[0.00 s]
+2.0.N: Trace Attempt  2	[0.00 s]
+2.0.N: Trace Attempt  3	[0.00 s]
+2.0.B: Trace Attempt  1	[0.00 s]
+2.0.N: Trace Attempt  3	[0.00 s]
+2.0.B: Trace Attempt  2	[0.00 s]
+2.0.N: Trace Attempt  4	[0.00 s]
+2.0.N: Trace Attempt  4	[0.00 s]
+2.0.B: Trace Attempt  3	[0.00 s]
+2.0.N: Trace Attempt  5	[0.01 s]
+2.0.N: Trace Attempt  5	[0.01 s]
+2.0.B: Trace Attempt  4	[0.01 s]
+2.0.B: Trace Attempt  5	[0.01 s]
+2.0.AM: Trace Attempt 52	[1.24 s]
+2.0.AM: Stopped processing property "sockit_owm.u_sockit_owm_sva.a_sample_presence"	[1.87 s].
+2.0.AM: Starting proof for property "sockit_owm.u_sockit_owm_sva.a_cyc_hold"	[0.00 s].
+2.0.AM: Trace Attempt  1	[0.00 s]
+2.0.AM: Trace Attempt  2	[0.00 s]
+2.0.AM: Trace Attempt  3	[0.00 s]
+2.0.AM: Trace Attempt  4	[0.00 s]
+2.0.AM: Trace Attempt  5	[0.00 s]
+2.0.AM: Trace Attempt  1	[0.08 s]
+2.0.AM: Trace Attempt  2	[0.08 s]
+2.0.AM: Trace Attempt  3	[0.08 s]
+2.0.AM: Trace Attempt  5	[0.09 s]
+2.0.N: Trace Attempt  1	[0.40 s]
+2.0.N: Trace Attempt  2	[0.40 s]
+2.0.N: Trace Attempt  3	[0.40 s]
+2.0.N: Trace Attempt  5	[0.42 s]
+2.0.AM: Trace Attempt  1	[0.79 s]
+2.0.AM: Trace Attempt  2	[0.80 s]
+2.0.AM: Trace Attempt  3	[0.80 s]
+2.0.AM: Trace Attempt  5	[0.82 s]
+2.0.Ht: Trace Attempt 24	[4.30 s]
+2.0.Bm: Trace Attempt 25	[4.64 s]
+2.0.Hp: Trace Attempt  5	[5.21 s]
+2.0.L: Trace Attempt 25	[5.35 s]
+2.0.Mpcustom2: Trace Attempt 13	[5.58 s]
+2.0.B: Trace Attempt 58	[4.17 s]
+2.0.N: Trace Attempt 28	[5.05 s]
+2.0.AM: Trace Attempt 30	[5.02 s]
+2.0.AM: Trace Attempt  1	[5.13 s]
+2.0.AM: Trace Attempt  2	[5.14 s]
+2.0.AM: Trace Attempt  3	[5.14 s]
+2.0.AM: Trace Attempt  5	[5.17 s]
+2.0.N: Trace Attempt  1	[5.64 s]
+2.0.N: Trace Attempt  2	[5.65 s]
+2.0.N: Trace Attempt  3	[5.65 s]
+2.0.N: Trace Attempt  5	[5.68 s]
+2.0.Ht: Trace Attempt 31	[8.86 s]
+2.0.Bm: Trace Attempt 32	[9.36 s]
+2.0.Mpcustom2: Trace Attempt 11	[10.03 s]
+2.0.L: Trace Attempt 30	[10.53 s]
+2.0.B: Trace Attempt 72	[8.43 s]
+2.0.AM: Trace Attempt 28	[9.85 s]
+2.0.N: Trace Attempt 25	[10.09 s]
+2.0.Ht: Trace Attempt 37	[13.28 s]
+2.0.Bm: Trace Attempt 38	[14.04 s]
+2.0.Mpcustom2: Trace Attempt 17	[14.40 s]
+2.0.L: Trace Attempt 33	[15.32 s]
+2.0.B: Trace Attempt 81	[13.01 s]
+2.0.Hp: Trace Attempt 26	[16.05 s]
+2.0.AM: Trace Attempt 37	[14.09 s]
+2.0.N: Trace Attempt 32	[14.22 s]
+2.0.Ht: Trace Attempt 41	[17.65 s]
+2.0.Bm: Trace Attempt 42	[18.72 s]
+2.0.Mpcustom2: Trace Attempt 17	[19.20 s]
+2.0.L: Trace Attempt 35	[19.57 s]
+2.0.AM: Trace Attempt  1	[17.04 s]
+2.0.AM: Trace Attempt  2	[17.04 s]
+2.0.AM: Trace Attempt  3	[17.04 s]
+2.0.AM: Trace Attempt  5	[17.06 s]
+2.0.B: Trace Attempt 87	[17.26 s]
+2.0.N: Trace Attempt 40	[20.00 s]
+2.0.Ht: Trace Attempt 42	[22.90 s]
+2.0.Mpcustom2: Trace Attempt 18	[23.32 s]
+2.0.AM: Trace Attempt 26	[21.07 s]
+2.0.Bm: Trace Attempt 46	[23.83 s]
+2.0.B: Trace Attempt 94	[21.48 s]
+2.0.L: Trace Attempt 37	[24.25 s]
+2.0.Ht: Trace Attempt 48	[27.11 s]
+2.0.Mpcustom2: Trace Attempt 22	[27.42 s]
+2.0.Bm: Trace Attempt 49	[28.27 s]
+2.0.AM: Trace Attempt 34	[25.69 s]
+2.0.B: Trace Attempt 100	[25.90 s]
+2.0.N: Trace Attempt 41	[26.11 s]
+2.0.L: Trace Attempt 39	[30.05 s]
+2.0.Hp: Trace Attempt 40	[31.29 s]
+2.0.Mpcustom2: Trace Attempt 20	[31.72 s]
+2.0.B: Trace Attempt 105	[29.68 s]
+2.0.B: Per property time limit expired (30.00 s) [30.02 s]
+2.0.B: Stopped processing property "sockit_owm.u_sockit_owm_sva.a_cyc_hold"	[30.02 s].
+2.0.B: Starting proof for property "sockit_owm.u_sockit_owm_sva.a_cyc_end"	[0.00 s].
+2.0.B: Trace Attempt  1	[0.00 s]
+2.0.B: Trace Attempt  2	[0.00 s]
+2.0.N: Trace Attempt 44	[29.00 s]
+2.0.N: Per property time limit expired (30.00 s) [30.02 s]
+2.0.N: Stopped processing property "sockit_owm.u_sockit_owm_sva.a_cyc_hold"	[30.02 s].
+2.0.N: Starting proof for property "sockit_owm.u_sockit_owm_sva.a_cyc_end"	[0.00 s].
+2.0.N: Trace Attempt  1	[0.00 s]
+2.0.B: Trace Attempt  3	[0.00 s]
+2.0.N: Trace Attempt  2	[0.00 s]
+2.0.N: Trace Attempt  3	[0.00 s]
+2.0.N: Trace Attempt  3	[0.00 s]
+2.0.B: Trace Attempt  4	[0.01 s]
+2.0.N: Trace Attempt  4	[0.00 s]
+2.0.N: Trace Attempt  4	[0.01 s]
+2.0.B: Trace Attempt  5	[0.01 s]
+2.0.AM: Trace Attempt 39	[28.73 s]
+2.0.AM: Stopped processing property "sockit_owm.u_sockit_owm_sva.a_cyc_hold"	[29.99 s].
+2.0.AM: Starting proof for property "sockit_owm.u_sockit_owm_sva.a_cyc_end"	[0.00 s].
+2.0.AM: Trace Attempt  1	[0.00 s]
+2.0.N: Trace Attempt  5	[0.01 s]
+2.0.AM: Trace Attempt  2	[0.00 s]
+2.0.AM: Trace Attempt  3	[0.00 s]
+2.0.AM: Trace Attempt  4	[0.01 s]
+2.0.AM: Trace Attempt  5	[0.01 s]
+2.0.AM: Trace Attempt  1	[0.02 s]
+2.0.AM: Trace Attempt  2	[0.02 s]
+2.0.AM: Trace Attempt  3	[0.02 s]
+2.0.AM: Trace Attempt  4	[0.03 s]
+2.0.AM: Trace Attempt  5	[0.03 s]
+2.0.AM: Trace Attempt  1	[0.13 s]
+2.0.AM: Trace Attempt  2	[0.13 s]
+2.0.AM: Trace Attempt  3	[0.13 s]
+2.0.AM: Trace Attempt  4	[0.15 s]
+2.0.AM: Trace Attempt  5	[0.15 s]
+2.0.N: Trace Attempt  1	[0.34 s]
+2.0.N: Trace Attempt  2	[0.35 s]
+2.0.N: Trace Attempt  3	[0.35 s]
+2.0.N: Trace Attempt  4	[0.37 s]
+2.0.N: Trace Attempt  5	[0.37 s]
+2.0.Bm: Trace Attempt 52	[33.08 s]
+2.0.AM: Trace Attempt  1	[1.18 s]
+2.0.AM: Trace Attempt  2	[1.18 s]
+2.0.AM: Trace Attempt  3	[1.18 s]
+2.0.AM: Trace Attempt  4	[1.20 s]
+2.0.AM: Trace Attempt  5	[1.21 s]
+2.0.L: Trace Attempt 40	[34.17 s]
+2.0.Ht: Trace Attempt 51	[35.68 s]
+2.0.Mpcustom2: Trace Attempt 27	[35.84 s]
+2.0.B: Trace Attempt 93	[4.10 s]
+2.0.Bm: Trace Attempt 54	[37.13 s]
+2.0.N: Trace Attempt 27	[5.18 s]
+2.0.AM: Trace Attempt 26	[5.41 s]
+2.0.Mpcustom2: Trace Attempt 23	[40.32 s]
+2.0.B: Trace Attempt 126	[8.29 s]
+2.0.Ht: Trace Attempt 56	[41.23 s]
+2.0.N: Trace Attempt 36	[9.46 s]
+2.0.AM: Trace Attempt 32	[9.49 s]
+2.0.L: Trace Attempt 42	[42.52 s]
+2.0.Bm: Trace Attempt 57	[42.76 s]
+2.0.Mpcustom2: Trace Attempt 27	[44.80 s]
+2.0.B: Trace Attempt 147	[12.49 s]
+2.0.Ht: Trace Attempt 58	[45.87 s]
+2.0.AM: Trace Attempt 37	[13.65 s]
+2.0.AM: Trace Attempt  1	[13.89 s]
+2.0.AM: Trace Attempt  2	[13.90 s]
+2.0.AM: Trace Attempt  3	[13.90 s]
+2.0.AM: Trace Attempt  4	[13.91 s]
+2.0.AM: Trace Attempt  5	[13.92 s]
+2.0.Hp: Trace Attempt 51	[47.46 s]
+2.0.L: Trace Attempt 43	[47.57 s]
+2.0.Bm: Trace Attempt 59	[47.72 s]
+2.0.N: Trace Attempt 41	[15.71 s]
+2.0.B: Trace Attempt 163	[16.71 s]
+2.0.Mpcustom2: Trace Attempt 30	[49.42 s]
+2.0.AM: Trace Attempt 26	[19.99 s]
+2.0.Bm: Trace Attempt 61	[52.67 s]
+2.0.L: Trace Attempt 44	[53.02 s]
+2.0.B: Trace Attempt 177	[20.95 s]
+2.0.Mpcustom2: Trace Attempt 32	[53.98 s]
+2.0.N: Trace Attempt 42	[24.08 s]
+2.0.AM: Trace Attempt 38	[24.09 s]
+2.0.Bm: Trace Attempt 63	[57.70 s]
+2.0.Ht: Trace Attempt 60	[57.76 s]
+2.0.B: Trace Attempt 190	[25.26 s]
+2.0.Mpcustom2: Trace Attempt 32	[58.01 s]
+2.0.L: Trace Attempt 45	[58.04 s]
+2.0.Hp: Trace Attempt 59	[60.28 s]
+2.0.N: Trace Attempt 48	[28.99 s]
+2.0.B: Trace Attempt 200	[29.28 s]
+2.0.N: Per property time limit expired (30.00 s) [30.02 s]
+2.0.N: Stopped processing property "sockit_owm.u_sockit_owm_sva.a_cyc_end"	[30.02 s].
+2.0.AM: Per property time limit expired (30.00 s) [30.02 s]
+2.0.AM: Stopped processing property "sockit_owm.u_sockit_owm_sva.a_cyc_end"	[30.02 s].
+2.0.AM: Starting proof for property "sockit_owm.u_sockit_owm_sva.a_oen_hold"	[0.00 s].
+2.0.N: Starting proof for property "sockit_owm.u_sockit_owm_sva.a_oen_hold"	[0.00 s].
+2.0.N: Trace Attempt  1	[0.00 s]
+2.0.AM: Trace Attempt  1	[0.00 s]
+2.0.N: Trace Attempt  2	[0.00 s]
+2.0.AM: Trace Attempt  2	[0.00 s]
+2.0.N: Trace Attempt  2	[0.00 s]
+2.0.N: Trace Attempt  3	[0.00 s]
+2.0.AM: Trace Attempt  3	[0.00 s]
+2.0.N: Trace Attempt  3	[0.01 s]
+2.0.B: Trace Attempt 201	[29.62 s]
+2.0.B: Per property time limit expired (30.00 s) [30.04 s]
+2.0.B: Stopped processing property "sockit_owm.u_sockit_owm_sva.a_cyc_end"	[30.04 s].
+2.0.B: Starting proof for property "sockit_owm.u_sockit_owm_sva.a_oen_hold"	[0.00 s].
+2.0.B: Trace Attempt  1	[0.00 s]
+2.0.AM: Trace Attempt  4	[0.01 s]
+2.0.B: Trace Attempt  2	[0.00 s]
+2.0.N: Trace Attempt  4	[0.01 s]
+2.0.B: Trace Attempt  3	[0.01 s]
+2.0.AM: Trace Attempt  5	[0.01 s]
+2.0.N: Trace Attempt  4	[0.01 s]
+2.0.B: Trace Attempt  4	[0.01 s]
+2.0.N: Trace Attempt  5	[0.02 s]
+2.0.B: Trace Attempt  5	[0.01 s]
+2.0.N: Trace Attempt  5	[0.03 s]
+2.0.AM: Trace Attempt  1	[0.18 s]
+2.0.AM: Trace Attempt  2	[0.19 s]
+2.0.AM: Trace Attempt  3	[0.19 s]
+2.0.Bm: Trace Attempt 65	[62.89 s]
+2.0.AM: Trace Attempt  4	[0.25 s]
+2.0.AM: Trace Attempt  5	[0.29 s]
+2.0.Mpcustom2: Trace Attempt 31	[63.42 s]
+2.0.Ht: Trace Attempt 64	[63.48 s]
+2.0.L: Trace Attempt 46	[64.28 s]
+2.0.AM: Trace Attempt  1	[1.71 s]
+2.0.AM: Trace Attempt  2	[1.71 s]
+2.0.AM: Trace Attempt  3	[1.72 s]
+2.0.AM: Trace Attempt  4	[1.87 s]
+2.0.AM: Trace Attempt  5	[2.07 s]
+2.0.N: Trace Attempt 24	[4.04 s]
+2.0.B: Trace Attempt 30	[4.07 s]
+2.0.N: Trace Attempt  1	[4.44 s]
+2.0.N: Trace Attempt  2	[4.45 s]
+2.0.N: Trace Attempt  3	[4.45 s]
+2.0.N: Trace Attempt  4	[4.60 s]
+2.0.N: Trace Attempt  5	[4.79 s]
+2.0.Mpcustom2: Trace Attempt 30	[67.63 s]
+2.0.Bm: Trace Attempt 67	[68.47 s]
+2.0.AM: Trace Attempt 16	[7.16 s]
+2.0.L: Trace Attempt 47	[70.02 s]
+2.0.Ht: Trace Attempt 67	[70.64 s]
+2.0.B: Trace Attempt 38	[8.17 s]
+2.0.N: Trace Attempt 14	[8.88 s]
+2.0.Mpcustom2: Trace Attempt 30	[72.06 s]
+2.0.Bm: Trace Attempt 68	[72.49 s]
+2.0.AM: Trace Attempt 23	[11.32 s]
+2.0.B: Trace Attempt 44	[12.24 s]
+2.0.N: Trace Attempt 21	[12.93 s]
+2.0.Mpcustom2: Trace Attempt 37	[76.06 s]
+2.0.L: Trace Attempt 48	[76.78 s]
+2.0.Hp: Trace Attempt 64	[77.84 s]
+2.0.Ht: Trace Attempt 68	[77.94 s]
+2.0.B: Trace Attempt 49	[16.46 s]
+2.0.AM: Trace Attempt 28	[17.34 s]
+2.0.Mpcustom2: Trace Attempt 34	[80.19 s]
+2.0.Bm: Trace Attempt 70	[80.22 s]
+2.0.N: Trace Attempt 26	[20.07 s]
+2.0.B: Trace Attempt 54	[21.02 s]
+2.0.Ht: Trace Attempt 70	[83.70 s]
+2.0.L: Trace Attempt 49	[83.73 s]
+2.0.AM: Trace Attempt 31	[21.73 s]
+2.0.Mpcustom2: Trace Attempt 32	[84.44 s]
+2.0.Hp: Trace Attempt 70	[86.58 s]
+2.0.Bm: Trace Attempt 72	[86.90 s]
+2.0.N: Trace Attempt 30	[24.97 s]
+2.0.B: Trace Attempt 58	[25.27 s]
+2.0.AM: Trace Attempt 34	[25.98 s]
+2.0.Mpcustom2: Trace Attempt 32	[88.91 s]
+2.0.L: Trace Attempt 50	[91.06 s]
+2.0.Ht: Trace Attempt 73	[91.64 s]
+2.0.N: Trace Attempt 32	[29.66 s]
+2.0.B: Trace Attempt 62	[29.65 s]
+2.0.N: Per property time limit expired (30.00 s) [30.02 s]
+2.0.N: Stopped processing property "sockit_owm.u_sockit_owm_sva.a_oen_hold"	[30.02 s].
+2.0.N: Starting proof for property "sockit_owm.u_sockit_owm_sva.a_oen_release"	[0.00 s].
+2.0.N: Trace Attempt  1	[0.00 s]
+2.0.N: Trace Attempt  2	[0.00 s]
+2.0.N: Trace Attempt  3	[0.00 s]
+2.0.N: Trace Attempt  3	[0.00 s]
+2.0.AM: Trace Attempt 35	[28.97 s]
+2.0.AM: Per property time limit expired (30.00 s) [30.02 s]
+2.0.AM: Stopped processing property "sockit_owm.u_sockit_owm_sva.a_oen_hold"	[30.02 s].
+2.0.AM: Starting proof for property "sockit_owm.u_sockit_owm_sva.a_oen_release"	[0.00 s].
+2.0.AM: Trace Attempt  1	[0.00 s]
+2.0.B: Per property time limit expired (30.00 s) [30.01 s]
+2.0.B: Stopped processing property "sockit_owm.u_sockit_owm_sva.a_oen_hold"	[30.01 s].
+2.0.B: Starting proof for property "sockit_owm.u_sockit_owm_sva.a_oen_release"	[0.00 s].
+2.0.B: Trace Attempt  1	[0.00 s]
+2.0.AM: Trace Attempt  2	[0.00 s]
+2.0.B: Trace Attempt  2	[0.00 s]
+2.0.N: Trace Attempt  4	[0.01 s]
+2.0.AM: Trace Attempt  3	[0.01 s]
+2.0.N: Trace Attempt  4	[0.01 s]
+2.0.B: Trace Attempt  3	[0.01 s]
+2.0.B: Trace Attempt  4	[0.01 s]
+2.0.N: Trace Attempt  5	[0.01 s]
+2.0.B: Trace Attempt  5	[0.01 s]
+2.0.N: Trace Attempt  5	[0.02 s]
+2.0.AM: Trace Attempt  4	[0.02 s]
+2.0.AM: Trace Attempt  5	[0.02 s]
+2.0.AM: Trace Attempt  1	[0.09 s]
+2.0.AM: Trace Attempt  2	[0.09 s]
+2.0.AM: Trace Attempt  3	[0.10 s]
+2.0.AM: Trace Attempt  4	[0.14 s]
+2.0.AM: Trace Attempt  5	[0.15 s]
+2.0.N: Trace Attempt  1	[0.21 s]
+2.0.N: Trace Attempt  2	[0.22 s]
+2.0.N: Trace Attempt  3	[0.22 s]
+2.0.N: Trace Attempt  4	[0.27 s]
+2.0.N: Trace Attempt  5	[0.29 s]
+2.0.Mpcustom2: Trace Attempt 31	[93.29 s]
+2.0.Bm: Trace Attempt 74	[95.03 s]
+2.0.AM: Trace Attempt  1	[2.71 s]
+2.0.AM: Trace Attempt  2	[2.72 s]
+2.0.AM: Trace Attempt  3	[2.72 s]
+2.0.AM: Trace Attempt  4	[2.77 s]
+2.0.AM: Trace Attempt  5	[2.79 s]
+2.0.B: Trace Attempt 51	[4.18 s]
+2.0.N: Trace Attempt 28	[4.36 s]
+2.0.N: Trace Attempt  1	[4.58 s]
+2.0.N: Trace Attempt  2	[4.59 s]
+2.0.N: Trace Attempt  3	[4.59 s]
+2.0.N: Trace Attempt  4	[4.64 s]
+2.0.N: Trace Attempt  5	[4.65 s]
+2.0.Mpcustom2: Trace Attempt 31	[98.32 s]
+2.0.Hp: Trace Attempt 72	[98.50 s]
+2.0.L: Trace Attempt 51	[98.67 s]
+2.0.Bm: Trace Attempt 75	[99.06 s]
+2.0.Ht: Trace Attempt 75	[100.45 s]
+2.0.AM: Trace Attempt 21	[8.01 s]
+2.0.B: Trace Attempt 65	[8.30 s]
+2.0.L: Using states from traces to { sockit_owm.u_sockit_owm_sva.a_irq_end_wins_rd:precondition1 (41) }
+2.0.L: Trace Attempt  3	[101.20 s]
+2.0.L: Trace Attempt  4	[101.20 s]
+2.0.L: Trace Attempt  5	[101.21 s]
+2.0.N: Trace Attempt 20	[8.87 s]
+2.0.Mpcustom2: Trace Attempt 33	[103.16 s]
+2.0.AM: Trace Attempt 31	[12.41 s]
+2.0.B: Trace Attempt 73	[12.52 s]
+2.0.Bm: Trace Attempt 77	[105.30 s]
+2.0.L: Trace Attempt 27	[105.90 s]
+2.0.Mpcustom2: Trace Attempt 34	[107.75 s]
+2.0.B: Trace Attempt 80	[16.86 s]
+2.0.Bm: Trace Attempt 78	[109.79 s]
+2.0.L: Trace Attempt 31	[110.06 s]
+2.0.AM: Trace Attempt 33	[18.21 s]
+2.0.N: Trace Attempt 32	[19.11 s]
+2.0.Mpcustom2: Trace Attempt 35	[113.94 s]
+2.0.B: Trace Attempt 86	[21.70 s]
+2.0.L: Trace Attempt 34	[114.85 s]
+2.0.AM: Trace Attempt 37	[22.30 s]
+2.0.Hp: Trace Attempt 75	[116.14 s]
+2.0.Ht: Trace Attempt 77	[116.28 s]
+2.0.Bm: Trace Attempt 80	[116.46 s]
+2.0.N: Trace Attempt 36	[26.08 s]
+2.0.B: Trace Attempt 91	[26.31 s]
+2.0.Mpcustom2: Trace Attempt 36	[119.08 s]
+2.0.L: Trace Attempt 36	[119.43 s]
+INFO (IPF144): 2: Initiating shutdown of proof [120.32 s]
+2.0.Hp: Requesting engine job to terminate
+2.0.Ht: Requesting engine job to terminate
+2.0.Bm: Requesting engine job to terminate
+2.0.Mpcustom2: Requesting engine job to terminate
+2.0.L: Requesting engine job to terminate
+2.0.N: Requesting engine job to terminate
+2.0.B: Requesting engine job to terminate
+2.0.AM: Requesting engine job to terminate
+2.0.Hp: Interrupted (multi)
+2.0.Hp: Trace Attempt 79	[116.14 s]
+2.0.Hp: Time limit expired (120.00 s) [120.28 s]
+2.0.L: Time limit expired (120.00 s) [120.14 s]
+2.0.L: Exited with Success (@ 120.34 s)
+2.0.N: Stopped processing property "sockit_owm.u_sockit_owm_sva.a_oen_release"	[27.53 s].
+2.0.N: Time limit expired (120.00 s) [27.53 s]
+2.0.AM: Trace Attempt 38	[23.88 s]
+2.0.AM: Stopped processing property "sockit_owm.u_sockit_owm_sva.a_oen_release"	[27.53 s].
+2.0.AM: Time limit expired (120.00 s) [27.53 s]
+2.0.B: Trace Attempt 92	[27.09 s]
+2.0.B: Stopped processing property "sockit_owm.u_sockit_owm_sva.a_oen_release"	[27.53 s].
+2.0.B: Time limit expired (120.00 s) [27.53 s]
+2.0.Ht: Interrupted (multi)
+2.0.Ht: Trace Attempt 78	[118.83 s]
+2.0.Ht: Time limit expired (120.00 s) [120.23 s]
+2.0.N: Exited with Success (@ 120.36 s)
+2.0.AM: Exited with Success (@ 120.36 s)
+2.0.B: Exited with Success (@ 120.36 s)
+2.0.Bm: Time limit expired (120.00 s) [120.23 s]
+2.0.Bm: Exited with Success (@ 120.37 s)
+2.0.Mpcustom2: Trace Attempt 37	[119.26 s]
+2.0.Mpcustom2: Time limit expired (120.00 s) [120.22 s]
+2.0.Mpcustom2: Exited with Success (@ 120.47 s)
+2.0.Ht: Exited with Success (@ 120.47 s)
+2.0.Hp: Exited with Success (@ 120.64 s)
+2: --------------------------------------------------------------
+ProofGrid Summary (utilization 99.86 % idle time 0.03 s)
+--------------------------------------------------------------
+     engines started                               :     9
+     engine jobs started                           :     9
+
+    Time in state (seconds)
+    --------------------------------------------------------
+               Pending     Running        Dying       Dead
+    --------------------------------------------------------
+    min           0.00        0.00        0.00        0.00
+    mean          0.15      106.87        0.09       13.50
+    median        0.12      120.17        0.04        0.28
+    max           0.25      120.32        0.31      119.79
+    sum           1.39      961.85        0.80      121.50
+
+    Data read    : 283.13 kiB
+    Data written : 31.88 kiB
+
+INFO (IPF180): 2: ProofGrid utilization: 99.86% slot-seconds: 961.85
+2: ProofGrid usable level: 0
+2: All pending notifications were processed.
+----------------------------------------
+| INFO (ICD005): 2: The proof thread was terminated because of a time_limit expiration.
+|     The current limit is 120 seconds.
+|     Modify it with the "-time_limit" switch or "set_prove_time_limit" command.
+----------------------------------------
+INFO (IPF059): 2: Completed proof on task: "<embedded>"
+
+==============================================================
+SUMMARY
+==============================================================
+           Properties Considered              : 66
+                 assertions                   : 33
+                  - proven                    : 22 (66.6667%)
+                  - bounded_proven (user)     : 0 (0%)
+                  - bounded_proven (auto)     : 0 (0%)
+                  - marked_proven             : 0 (0%)
+                  - cex                       : 7 (21.2121%)
+                  - ar_cex                    : 0 (0%)
+                  - undetermined              : 4 (12.1212%)
+                  - unknown                   : 0 (0%)
+                  - error                     : 0 (0%)
+                 covers                       : 33
+                  - unreachable               : 3 (9.09091%)
+                  - bounded_unreachable (user): 0 (0%)
+                  - covered                   : 30 (90.9091%)
+                  - ar_covered                : 0 (0%)
+                  - undetermined              : 0 (0%)
+                  - unknown                   : 0 (0%)
+                  - error                     : 0 (0%)
+time_limit
+[<embedded>] % 
+[<embedded>] % check_cov -measure -time_limit 2m
+INFO (ICOV052): Using current active checker mode "coi" for "check_cov -measure".
+INFO (ICOV028): Loading coverage metrics from prove/hunt results.
+INFO (ICOV033): Starting {coi} measurement for task {<embedded>}.
+INFO (ICOV034): Finished {coi} measurement for task {<embedded>}.
+INFO (ICOV030): Completed measure for task {<embedded>}.
+[<embedded>] % 
+[<embedded>] % report -json -file ./metrics/[exec date +%Y%m%dT%H%M%S].json
+[<embedded>] % 
+[<embedded>] % exit
+[<embedded>] % INFO (IPL005): Received request to exit from the console.
+INFO (IPL014): Waiting for the Tcl-thread to exit.
+INFO: Waiting for proof threads to stop...
+INFO: Proof threads stopped.
+INFO (IPL018): The peak resident set memory use for this session was 1.685 GB.
+INFO (IPL015): The Tcl-thread exited with status 0.
+INFO (IPL016): Exiting the analysis session with status 0.

@@ -1,0 +1,66 @@
+--- a/GENERATOR_PROMPT.md
++++ b/GENERATOR_PROMPT.md
+@@ -4,6 +4,9 @@
+ (SVA) that specify the behaviour of the design in this workspace, as a
+ checker module bound to the design's top module.
+ 
++You are not looking for bugs. You are writing a specification that this RTL
++satisfies: every assertion you write must hold on the RTL exactly as it is.
++
+ ## Workspace
+ 
+ Your workspace is the directory named in your invocation message. Work only
+@@ -30,7 +33,13 @@
+ 2. `<top>_sva.f` — a single line: `./sva/<top>_sva.sv`
+ 
+ Run `./check_syntax.sh` after writing the checker and after every later
+-edit, and fix every error until it prints `SYNTAX OK`.
++edit, and fix every error until it prints `SYNTAX OK`. Then read every
++warning that points into your checker file. A warning that an operator,
++function or module was blackboxed, removed or left undriven means the tool
++replaced it with an arbitrary value, so everything computed from it is
++unconstrained: treat such a warning as an error and rewrite that logic.
++In auxiliary logic, avoid `*`, `/` and `%` unless both operands are
++constants.
+ 
+ ## Two sources, two levels
+ 
+@@ -50,6 +59,11 @@
+    relationships between internal state and the outputs.
+ 
+ If the documentation and the RTL disagree, follow the documentation.
++RTL-level properties, on the other hand, describe what the RTL actually
++does: never write an RTL-level property that you believe the RTL violates,
++even if you think the designer meant something else. If your analysis shows
++that an assertion would fail on this RTL, delete or correct it (and say so);
++never keep an assertion because you expect it to fail.
+ 
+ **Do not transcribe the RTL.** An assertion that copies an RTL statement
+ only restates the code and says nothing new. For example, for
+@@ -86,9 +100,12 @@
+   input pins can toggle at any time. An assertion that assumes a "polite"
+   software sequence is false.
+ - **Registers without a reset start with an arbitrary value**, and a register
+-  that is never assigned is arbitrary forever. Never assert the value of such
+-  a register, and do not assume it has any value until the design has
+-  provably written it.
++  that is never assigned is arbitrary forever. A register or variable that is
++  only set in an `initial` block counts as never assigned (`initial` blocks
++  are ignored). Never assert the value of such a register, or of any signal
++  computed from it (an output it selects, shifts or indexes, a stored copy),
++  and do not assume it has any value until the design has provably written
++  it.
+ - **Reset.** Use the reset from the setup script with the polarity it gives.
+   Disable assertions during reset (`disable iff`). Remember that `$past`,
+   `$rose`, `$fell`, `$stable` and `|=>` look one cycle back or ahead; at the
+@@ -126,8 +143,8 @@
+ ## Specify the whole design
+ 
+ Together, the assertions should specify all of the design's observable
+-behaviour, so that a bug anywhere in the logic would violate at least one of
+-them. Systematically go through:
++behaviour, so that every behaviour the design exhibits is pinned down by at
++least one of them. Systematically go through:
+ 
+ - every output port, in every mode and phase;
+ - every register and state variable: its reset value, every event that

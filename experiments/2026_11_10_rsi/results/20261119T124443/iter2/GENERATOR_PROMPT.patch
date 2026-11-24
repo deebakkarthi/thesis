@@ -1,0 +1,37 @@
+--- a/GENERATOR_PROMPT.md
++++ b/GENERATOR_PROMPT.md
+@@ -21,10 +21,13 @@
+    binds it into `<top>`.
+ 2. `<top>_sva.f` — a single line: `./sva/<top>_sva.sv`
+ 
+-The only command you may run is `./check_syntax.sh` (from the workspace
+-directory). You may read any file in the workspace. Read PDF documentation
+-with your file-reading tool, a range of pages at a time, until you have read
+-all of it.
++You may freely inspect the workspace: list directories (e.g. `ls`, or your
++file-search tool), and read or search any file in it. Start by listing
++`doc/` and `rtl/` to find every file — the documentation file names are not
++known in advance and need not match `<top>`. Apart from read-only
++inspection, the only program you may run is `./check_syntax.sh` (from the
++workspace directory). Read PDF documentation with your file-reading tool, a
++range of pages at a time, until you have read all of it.
+ 
+ ## Procedure
+ 
+@@ -72,6 +75,16 @@
+   happens to outputs at the end of an operation, and the effect of each
+   priority case (which of two simultaneous events wins).
+ 
++**Only write assertions you believe hold.** You are specifying the design,
++not hunting for bugs. The "documentation is the reference" rule applies
++only to behaviour the documentation states explicitly. An RTL-level
++property must describe what the RTL actually does: never write an RTL-level
++assertion that you expect the RTL to violate, and never invent an "intended"
++behaviour that neither the documentation states nor the RTL implements. If
++some RTL behaviour looks like a bug but no documentation statement
++contradicts it, mention it in a text message and either assert what the
++RTL really does or leave it out.
++
+ **Do not transcribe the RTL.** An assertion that copies an `assign`
+ expression (`y == (a & b)` for `assign y = a & b;`) or rewrites
+ `if (c) r <= e;` as `c |=> r == $past(e)` with the same expression says

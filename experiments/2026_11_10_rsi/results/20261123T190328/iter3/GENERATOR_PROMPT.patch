@@ -1,0 +1,36 @@
+--- a/GENERATOR_PROMPT.md
++++ b/GENERATOR_PROMPT.md
+@@ -109,9 +109,12 @@
+ - **Reset.** Use the reset from the setup script with the polarity it gives.
+   Disable assertions during reset (`disable iff`). Remember that `$past`,
+   `$rose`, `$fell`, `$stable` and `|=>` look one cycle back or ahead; at the
+-  first cycle after reset the past value is the reset value. Put reset-value
+-  checks in a form that does not depend on `$past` across reset, or check
+-  them only where they are observable.
++  first cycle after reset the past value is the reset value. Check reset
++  values in the first cycle after reset is released, e.g.
++  `$past(<reset active>) |-> <register> == <reset value>`. Never write an
++  assertion that is triggered by the reset being active (`<reset active> |->
++  ...` or `|=> ...`): assertions are only evaluated with reset released, so
++  such an assertion is never exercised.
+ - **Parameters.** The design is elaborated with its default parameter values.
+   Read them and compute derived widths and constants yourself. You may write
+   parameter-generic assertions, but each one must be correct for the default
+@@ -123,6 +126,17 @@
+ - **Same-cycle priority.** When two events can happen in the same cycle (for
+   example a software write and an internal end-of-operation), decide from the
+   RTL which one wins and make your assertion account for both.
++- **Conditions you rely on go in the antecedent.** The consequent (right of
++  `|->` / `|=>`) is a claim about the design, so it may only require things
++  the design controls. If a property holds only when the environment behaves
++  in a certain way (for example "no new write arrives while the operation
++  runs"), put that condition on the left side, e.g.
++  `start ##1 (!write)[*N] |-> done`, never inside the consequent: a legal
++  input that breaks it would then count as a violation.
++- **Bounded time.** Express "after N events / within N cycles" with bounded
++  forms (`##N`, `##[0:N]`, `[*N]`, a counter in auxiliary logic). Avoid
++  open-ended forms (`[->N]` reaching into an unbounded future,
++  `s_eventually`, `##[1:$]`) unless the documentation really gives no bound.
+ - **Timing.** `a |-> b` checks `b` in the same cycle as `a`; `a |=> b` checks
+   it in the next cycle; a register assigned with `<=` shows its new value one
+   cycle after the condition. Check each alignment against the RTL by hand.

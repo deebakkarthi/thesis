@@ -57,13 +57,17 @@ n_pre = len(pre_ok | pre_unr)
 user_covers_total = covers_total - n_pre if n_pre else covers_total
 user_covered = s["covers"]["covered"] - len(pre_ok) if n_pre else s["covers"]["covered"]
 
-fc = None
+fc = stim = None
 for cs in d["cov"]["task"][0]["coverage_summary"]:
     if cs.get("instance_name") == top:
         fc = cs["formal_coverage_local"]
+        stim = cs.get("stimuli_coverage_local")
 fc_cc = fc["covered_and_checked"] if fc else 0
 fc_tot = fc["total"] if fc else 0
-fc_und = fc["unreachable_or_undetectable"] if fc else 0
+# Exclude only items stimuli coverage proved unreachable or dead. With a
+# proof-core-only run (no stimuli) nothing is excluded, so this is checked/total;
+# items no proven assertion checks ("undetectable") always count as missed.
+fc_und = (stim.get("unreachable", 0) + stim.get("deadcode", 0)) if stim else 0
 
 row.update(proven=proven, asserts=asserts_total, covered=user_covered, covers=user_covers_total,
            nonvac=len(pre_ok), precond=n_pre, fc=fc_cc, fc_tot=fc_tot, fc_undet=fc_und)
@@ -75,7 +79,7 @@ print(f"covered     {user_covered}/{user_covers_total}  {pct(user_covered, user_
       f"   (user covers)")
 print(f"nonvacuous  {len(pre_ok)}/{n_pre}  {pct(len(pre_ok), n_pre):.1f}%   (assert antecedents reachable)")
 print(f"formal      {fc_cc}/{fc_tot - fc_und}  {pct(fc_cc, fc_tot - fc_und):.1f}% of achievable"
-      f"   (raw {fc_cc}/{fc_tot} {pct(fc_cc, fc_tot):.1f}%, {fc_und} unreachable/undetectable)")
+      f"   (raw {fc_cc}/{fc_tot} {pct(fc_cc, fc_tot):.1f}%, {fc_und} excluded as unreachable/dead by stimuli)")
 for label, ns in (("CEX", cex), ("UNREACHABLE cover", user_cov_unr), ("VACUOUS assert", pre_unr)):
     for n in sorted(ns):
         print(f"  {label}: {n}")

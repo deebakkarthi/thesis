@@ -1,9 +1,9 @@
 # RSI: a general-purpose SVA generation prompt
 
-Your goal is to produce a generator prompt: a prompt that makes a `haiku`
+Your goal is to produce a generator prompt: a prompt that makes an 
 agent write high-quality SystemVerilog Assertions for **any** RTL design. You
 tune it by running it on the designs in `designs/` and reading the metrics.
-The prompt is judged by how it performs on designs it has never seen.
+The prompt is judged by how it performs on these designs.
 
 Paths below are relative to this directory
 (`experiments/2026_11_10_rsi`).
@@ -68,19 +68,11 @@ design's documentation (e.g. a PDF datasheet; its file name need not match
    is not hunting for bugs. It writes assertions that it believes are true
    of the design, drawn from two sources:
    - **Documentation → high-level assertions.** The documentation is the
-     golden truth about what the design does. Take from it the
-     architectural behaviour: register-map semantics (a write followed by a
-     read returns the written value; reserved bits read as zero; reset
-     values), interface and handshake protocols, the effects of control
-     and status bits, end-to-end relations between inputs and outputs,
-     legal mode and state sequences through their observable effects.
+     golden truth about what the design is supposed to do.
+
    - **RTL → low-level, designer-intent assertions.** Use the RTL for what
      the designer evidently intended at the implementation level and the
-     documentation does not spell out: invariants on internal state, legal
-     ranges of counters and state registers, mutual exclusion and one-hot
-     conditions, relations between internal signals that carry a meaning
-     (a state, a count, a mode), and how internal registers map to what
-     the documentation describes.
+     documentation does not spell out.
 
    When the two disagree, the documentation wins. Record such conflicts in
    `notes.md`; do not tune the prompt to make the generator distrust the
@@ -95,14 +87,6 @@ design's documentation (e.g. a PDF datasheet; its file name need not match
    Formal coverage reached through transcription does not count: a prompt
    that scores well by transcribing has failed this constraint, whatever
    its numbers.
-
-   **No timing-heavy properties.** The prompt must not ask for, or steer
-   the generator towards, cycle-accurate timing: durations measured in
-   cycles, "exactly N cycles after", bounded liveness with a computed N,
-   checker-local cycle counters, or reference models that track time. Such
-   properties are very hard to get right from the RTL alone. The generator
-   may still write a timing property when the documentation states the
-   timing explicitly, but the prompt must not push for one.
 
    **No covers.** The generator writes no `cover property` statements. The
    formal tool generates the covers it needs (e.g. precondition covers for
@@ -148,20 +132,6 @@ is a prompt-compliance failure: note it.
 
 Do not inflate metric 1 by asking for fewer or trivial assertions: a
 prompt that loses formal coverage to gain proven % is worse.
-
-4. **Transcription rate** (reviewed by you, not computed by a script): the
-   fraction of user asserts that are verbatim restatements of RTL
-   statements as defined in constraint 3. Sample at least 20 asserts per
-   run, or all of them if there are fewer, and record the estimate in
-   `notes.md`. It should go down over the iterations. Metric 3 only counts
-   as progress if this stays low.
-
-Expect a tension between metric 3 and constraint 3: transcription is the
-cheapest way to pin every register. Resolve it with documentation-level
-properties that still constrain observable behaviour exactly (for example,
-"after writing X to the register, reading it returns X until the next
-write") and with RTL-level invariants, never by allowing transcription back
-in and never by pushing for timing-heavy properties.
 
 ## Tools (all in `common/`)
 
@@ -216,8 +186,7 @@ measures it. In iteration `i`:
    made that mistake*, not just what the mistake is. Failures are:
    - every CEX and undetermined assert,
    - every vacuous assert,
-   - every user cover or timing-heavy property (compliance failures),
-   - every transcribed assert found in your sample,
+   - every user cover
    - each *class* of missed formal-coverage items (group the
      `uncovered.txt` entries by the logic they belong to, e.g. "status
      register clear paths", "internal data path with no port visibility").

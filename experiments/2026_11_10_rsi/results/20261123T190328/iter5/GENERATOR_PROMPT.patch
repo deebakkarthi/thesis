@@ -1,0 +1,18 @@
+--- a/GENERATOR_PROMPT.md
++++ b/GENERATOR_PROMPT.md
+@@ -144,6 +144,15 @@
+   the design's state that hold in every cycle, for example "while the
+   operation is active and fewer than N ticks have elapsed, busy is high" and
+   "when the N-th tick occurs, busy falls and the status flag rises".
++  Two rules make such counters work:
++  - When a duration is made of repeated shorter periods (a prescaler or
++    divider tick, a bit time, a beat), count those periods, not raw clock
++    cycles, and check the length of one period in its own property. A
++    counter of raw clocks over hundreds of cycles is no easier to check than
++    an unrolled window.
++  - Also assert, in every cycle, how your counter corresponds to the
++    design's own progress state (its own counter or phase), so that every
++    timing property only needs to look one cycle ahead.
+ - **Timing.** `a |-> b` checks `b` in the same cycle as `a`; `a |=> b` checks
+   it in the next cycle; a register assigned with `<=` shows its new value one
+   cycle after the condition. Check each alignment against the RTL by hand.

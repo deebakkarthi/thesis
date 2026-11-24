@@ -1,0 +1,29 @@
+--- a/GENERATOR_PROMPT.md
++++ b/GENERATOR_PROMPT.md
+@@ -130,13 +130,20 @@
+   `|->` / `|=>`) is a claim about the design, so it may only require things
+   the design controls. If a property holds only when the environment behaves
+   in a certain way (for example "no new write arrives while the operation
+-  runs"), put that condition on the left side, e.g.
+-  `start ##1 (!write)[*N] |-> done`, never inside the consequent: a legal
++  runs"), put that condition on the left side or in the auxiliary logic that
++  defines when the property applies, never inside the consequent: a legal
+   input that breaks it would then count as a violation.
+-- **Bounded time.** Express "after N events / within N cycles" with bounded
+-  forms (`##N`, `##[0:N]`, `[*N]`, a counter in auxiliary logic). Avoid
+-  open-ended forms (`[->N]` reaching into an unbounded future,
+-  `s_eventually`, `##[1:$]`) unless the documentation really gives no bound.
++- **Bounded time, checked step by step.** Avoid open-ended forms (`[->N]`
++  reaching into an unbounded future, `s_eventually`, `##[1:$]`). For short
++  windows (up to a few tens of cycles) a fixed delay or repetition such as
++  `start ##1 (!write)[*N] |-> done` is fine. For longer durations do not
++  unroll time: such properties are fragile and impractical to check. Instead
++  keep a small auxiliary counter of the relevant events (clock cycles,
++  ticks, transfers), started by the start event and stopped when the
++  operation is interrupted, and assert relations between that counter and
++  the design's state that hold in every cycle, for example "while the
++  operation is active and fewer than N ticks have elapsed, busy is high" and
++  "when the N-th tick occurs, busy falls and the status flag rises".
+ - **Timing.** `a |-> b` checks `b` in the same cycle as `a`; `a |=> b` checks
+   it in the next cycle; a register assigned with `<=` shows its new value one
+   cycle after the condition. Check each alignment against the RTL by hand.
